@@ -13,22 +13,18 @@
 </head>
 <body>
 
-    <header class="container-fluid">
-        <div>
-            LAVORO Workspaces
+    <header id="hdr" class="container-fluid">
+        <div class="logo">
+            LAVORO
         </div>
-        <div>
-            Strapline
+        <div class="strapline">
+            Workspaces
         </div>
-        <div>
+        <div class="authStatus">
             {% if user.is_authenticated %}
-                <div>
-                    <a href="{% url 'account_logout' %}">Logout</a>
-                </div>
+                <a href="{% url 'account_logout' %}">Logout</a>
             {% else %}
-                <div>
-                    <a href="{% url 'account_login' %}">Sign in</a> | <a href="{% url 'account_signup' %}">Sign up</a>
-                </div>
+                <a href="{% url 'account_login' %}">Sign in</a> | <a href="{% url 'account_signup' %}">Sign up</a>
             {% endif %}
         </div>
     </header>
