@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load account %}
+
+{% block title %}Home{% endblock %}
+
+{% block header %}Homepage Header{% endblock %}
+
+{% block content %}
+
+    <p>This is the specific content for this page.</p>
+
+    <h3>AllAuth Profile</h3>
+    <p>1.<strong>{% user_display user %}</strong></p>
+    <p>2. <strong>{{ user_display }}</strong> has logged in...</p>
+    <p>3. In case you forgot, your username is <strong>{{ user }}</strong>.</p>
+    <p>Username: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Phone Number: {{ user.phone_number }}</p>
+
+    
+
+{% endblock %}
