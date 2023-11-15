@@ -33,5 +33,9 @@ CI Project 4
 - Copy default AllAuth templates to templates/account (extend base.html)
 - settings.py > TEMPLATES > 'DIRS': [os.path.join(BASE_DIR, 'templates')],
 
+## Libraries
+- Bootstrap (5.3.2)
+- jQuery (3.7.1)
+- FontAwesome (4)
 
 ## Bugs
