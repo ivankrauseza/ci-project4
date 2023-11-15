@@ -21,3 +21,17 @@ CI Project 4
 - settings.py > SITE_ID = 1
 - settings.py > EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 - ADMIN > /admin/account/emailaddress/ (verify admin email address)
+
+
+## Templates
+
+### Default Templates
+- base.html
+- index.html (temporary for testing)
+
+### AllAuth Templates
+- Copy default AllAuth templates to templates/account (extend base.html)
+- settings.py > TEMPLATES > 'DIRS': [os.path.join(BASE_DIR, 'templates')],
+
+
+## Bugs
