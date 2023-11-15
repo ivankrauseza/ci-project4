@@ -1,29 +1,87 @@
 body {
-    margin: 32px;
+    margin: 0;
+    font-size: 16px;
 }
 
 * {
     box-sizing: border-box;
 }
 
-#hdr {
-    display: block;
-    width: 100%;
-    height: 64px;
-    line-height: 32px;
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.temp {
+    display: inline-block;
     padding: 16px;
-    background-color:aquamarine;
+    background-color: orangered;
+    color: yellow;
+}
+
+header, footer, main, nav, section, aside, article {
+    display: block;
+    float: left;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+#hdr {
+    height: 64px;
+    line-height: 40px;
+    padding: 12px 16px;
+    background: #ffce00;
+    color: #fff;
     position: relative;
     .logo {
         float: left;
         width: auto;
+        img {
+            float: left;
+        }
     }
     .strapline {
         float: left;
         width: auto;
+        display: none;
     }
     .authStatus {
         width: auto;
         float: right;
+        font-size: 0.9em;
+        text-transform: uppercase;
+        a {
+            display: inline-block;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 12px;
+            color: #1A1A1A;
+            position: relative;
+            &:hover {
+                color: #000;
+            }
+            i {
+                font-size: 24px;
+                margin: 8px;
+            }
+            &.loggedOut::before {
+                content: 'Login';
+                width: auto;
+                text-wrap:nowrap;
+                position: absolute;
+                right: 100%;
+                top:50%;
+                transform: translate(-0%,-50%);
+            }
+        }
+    }
+}
+
+main {
+    a {
+        color: #0071BC;
+        &:hover {
+            color: #013D5E;
+        }
     }
 }
