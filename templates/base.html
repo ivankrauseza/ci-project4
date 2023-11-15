@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <header>
+    <header class="container-fluid">
         <div>
             LAVORO Workspaces
         </div>
@@ -32,7 +32,7 @@
 
     <hr/>
 
-    <main>
+    <main class="container-fluid">
         <section>
             {% if user.is_authenticated %} 
                 <aside>                
@@ -86,7 +86,6 @@
 
 
             <article style="background-color: #f6f6f6;">
-                <h1>{% block header %}Welcome to My Website{% endblock %}</h1>
                 {% block content %}{% endblock %}
             </article>
 
@@ -95,7 +94,7 @@
 
     <hr/>
 
-    <footer>
+    <footer class="container-fluid">
         <p>&copy; 2023 Lavoro Workspaces</p>
         <nav><a href="{% url 'index' %}">Home</a></nav>
     </footer>
