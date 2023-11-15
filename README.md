@@ -38,4 +38,13 @@ CI Project 4
 - jQuery (3.7.1)
 - FontAwesome (4)
 
+## Static files
+- css
+- js
+- images
+- favicon
+
 ## Bugs
+
+## Resources
+- Favicon (https://favicon.io/)
