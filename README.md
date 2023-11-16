@@ -1,5 +1,5 @@
 # ci-project4 - Lavoro Booking System
-CI Project 4
+Customers can book a workspace, Staff members can manage bookings, Superusers can manage everything.
 
 ## Initial Setup
 - django-admin startproject lavoro

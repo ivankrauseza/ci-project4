@@ -5,7 +5,6 @@
 {% block member_content %}
 
     <h2>My Profile</h2>
-    <hr/>
     <p>Username: {{ user.username }} / {{ user }}</p>
     <p>Email: {{ user.email }} ... <a href="{% url 'account_email' %}">change</a></p>
 

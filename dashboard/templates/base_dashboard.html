@@ -1,15 +1,61 @@
+{% extends 'base.html' %}
+
 {% load account %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %} | Lavoro Workspaces</title>
-</head>
-<body>
+{% block content %}
 
-    {% block content %}{% endblock %}
+    {% if user.is_authenticated  %}
+        
+        {% if user.is_staff %}
+            <aside>
+                <nav class="dashboard">
+                    <ul>
+                        <li>
+                            <a href="{% url 'dashboard' %}">
+                                <i class="fa-solid fa-gauge"></i>
+                                <small>dashboard</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'members' %}">
+                                <i class="fa-solid fa-people-group"></i>
+                                <small>members</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'bookings' %}">
+                                <i class="fa-solid fa-clipboard-list"></i>
+                                <small>bookings</small>
+                            </a>
+                        </li>
+                        {% if user.is_superuser %}
+                        <li>
+                            <a href="{% url 'staff' %}">
+                                <i class="fa-solid fa-id-badge"></i>
+                                <small>staff</small>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </aside>
+            <article>
+                <header>
+                    <small>You are logged in as: <strong>{{ user.username }}</strong></small>
+                    <hr/>
+                </header>
+                <div>
+                    {% block dashboard_content %}{% endblock %}
+                </div>
+            </article>
+        {% endif %}
+        
+        {% if not user.is_staff %}
+            <p>Redirect to profile...You are not a admin so you cannot view this page!</p>
+        {% endif %}
+        
+    {% else %}
+        <a href="{% url 'account_login' %}" class="loggedOut">Please sign in to view this page.</a>
+    {% endif %}
 
-</body>
-</html>
+{% endblock %}

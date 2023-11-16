@@ -77,7 +77,7 @@ header, footer, main, nav, section, aside, article {
 }
 
 main {
-    padding:1em;
+    padding:0em;
     a {
         color: #0071BC;
         &:hover {
@@ -85,7 +85,91 @@ main {
         }
     }
     section {
-        padding:1em;
+        padding:0em;
         background-color: #fff;
+        position: relative;
+        min-height: calc(100vh - 64px);
+        border-left: 64px solid #eee;
+        aside {
+            float: left;
+            width: 64px;
+            position: absolute;
+            top: 0;
+            left: -64px;
+            nav {
+                padding:0 1em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                ul {
+                    float: left;
+                    margin: 0;
+                    width: 64px;
+                    padding: 0;
+                    list-style: none;
+                    li {
+                        float: left;
+                        width: auto;
+                        font-size: 24px;
+                        padding: 8px 0;
+                        text-align: center;
+                        a {
+                            float: left;
+                            width: auto;
+                            color: #013D5E;
+                            &:hover {
+                                color: #1A1A1A;
+                            }
+                            i {
+                                margin: 0 auto;
+                                border-radius: 8px;
+                                width: 24px;
+                                height: 24px;
+                                padding:0;
+                            }
+                            small {
+                                float: left;
+                                width: 100%;
+                                font-size: 11px;
+                                line-height:150%;
+                                white-space: nowrap;
+                            }
+                        }
+                    }
+                }
+                &.members {
+                    color: lightcyan;
+                }
+                &.dashboard {
+                    color: lightgreen;
+                }
+            }
+        }
+        article {
+            float: left;
+            width: 100%;
+            padding: 1em;
+            table {
+                width: 100%;
+                border: 1px solid #eee;
+                tr {
+                    border-bottom: 1px solid #eee;
+                    &:nth-child(odd) {
+                        background-color: #f6f6f6;}
+                    &:nth-child(even) {
+                        background-color: #fff;
+                    }
+                    &:hover {
+                        background-color: #eee;
+                    }
+                    td {
+                        padding: 8px;
+                        small {
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

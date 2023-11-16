@@ -1,0 +1,54 @@
+{% extends 'base_dashboard.html' %}
+
+{% block title %}Members{% endblock %}
+
+{% block dashboard_content %}
+
+    <h2>Members</h2>
+    
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add New
+    </button>
+    <hr/>
+    <table>
+        {% for user in users_members %}
+            <tr>
+                <td>
+                    {{ user.username }} | {{ user.email }}  - 
+                    <br/>
+                    <small>
+                        {% if user.is_active %}
+                        <a href="{% url 'disable_user' user.id %}" style="color:green">Enabled</a>
+                        {% else %}
+                        <a href="{% url 'disable_user' user.id %}" style="color:red">Disabled</a>
+                        {% endif %}
+                    </small>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Only add a new member if the individual has requested it.</p>
+                <form method="post" action="{% url 'staff' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Create Admin User</button>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+{% endblock %}

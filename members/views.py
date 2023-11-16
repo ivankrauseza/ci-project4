@@ -2,8 +2,8 @@ from django.shortcuts import render
 
 
 def profile(request):
-    return render(request, 'profile.html')
+    return render(request, 'myprofile.html')
 
 
 def bookings(request):
-    return render(request, 'bookings.html')
+    return render(request, 'mybookings.html')

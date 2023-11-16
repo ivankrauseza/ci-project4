@@ -1,0 +1,6 @@
+<!-- create_admin_user.html -->
+<form method="post" action="{% url 'create_admin_user' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Admin User</button>
+</form>
