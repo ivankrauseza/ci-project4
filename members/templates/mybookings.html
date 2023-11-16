@@ -5,7 +5,31 @@
 {% block member_content %}
 
     <h2>My Bookings</h2>
-    <p>List of bookings...</p>
+    <table>
+        <tbody>
+            {% for item in booking_data %}
+                <tr class="{% if item.cancel %}red{% else%}green{% endif%}">
+                    <td>
+                        <small>Booking date</small>
+                        <br/>
+                        <strong>{{ item.date }}</strong>
+                        <br/>
+                        <small>Created</small>
+                        <br/>
+                        {{ item.created }}
+                    </td>
+                    <td align="right">
+                        {% if item.cancel %}
+                            <span style="color:red">Cancelled<br/>{{ item.cancelwhen }}</span>
+                        {% else%}
+                            <span style="color:green">Cancel?</span>
+                        {% endif%}
+                        <button>edit</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 
 {% endblock %}

@@ -151,9 +151,17 @@ main {
             padding: 1em;
             table {
                 width: 100%;
-                border: 1px solid #eee;
+                border: 1px solid #ccc;
+                font-size: 12px;
+                thead {
+                    font-weight: 700;
+                    tr {
+                        background-color: #ccc!important;
+                    }
+                }
                 tr {
-                    border-bottom: 1px solid #eee;
+                    border-left:5px solid #ccc;
+                    border-bottom: 1px solid #ccc;
                     &:nth-child(odd) {
                         background-color: #f6f6f6;}
                     &:nth-child(even) {
@@ -167,6 +175,12 @@ main {
                         small {
                             font-size: 10px;
                         }
+                    }
+                    &.red {
+                        border-left:5px solid red;
+                    }
+                    &.green {
+                        border-left:5px solid green;
                     }
                 }
             }

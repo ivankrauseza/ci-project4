@@ -1,11 +1,30 @@
 {% extends 'base_dashboard.html' %}
 
-{% block title %}Bookings{% endblock %}
+{% block title %}All Bookings{% endblock %}
 
 {% block dashboard_content %}
 
-    <h2>Bookings</h2>
-    <p>List of bookings...</p>
+    <h2>All Bookings</h2>
+    <table>
+        <thead>
+            <tr>
+                <td>Username</td>
+                <td>Date</td>
+                <td>Created</td>
+                <td>Cancelled?</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in booking_data %}
+                <tr class="{% if item.cancel %}red{% else%}green{% endif%}">
+                    <td>{{ item.member }}</td>
+                    <td>{{ item.date }}</td>
+                    <td>{{ item.created }}</td>
+                    <td>{% if item.cancel %}<span style="color:red">Yes</span>{% else%}<span style="color:green">No</span>{% endif%}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 
 {% endblock %}

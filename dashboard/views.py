@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.management import call_command
 from django.contrib.auth.decorators import login_required
+from booking.models import Booking
 from django.contrib.auth.models import User
 # Disable User
 from django.http import HttpResponseRedirect
@@ -18,12 +19,13 @@ def dashboard(request):
     return render(request, 'dashboard.html')
 
 
+@login_required
 def bookings(request):
-    return render(request, 'bookings.html')
+    booking_data = Booking.objects.all()
+    return render(request, 'bookings.html', {'booking_data': booking_data})
 
 
 def members(request):
-
     if request.method == 'GET':
         users_members = User.objects.filter(is_staff=False)
 

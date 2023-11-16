@@ -154,10 +154,18 @@ main section article {
 }
 main section article table {
   width: 100%;
-  border: 1px solid #eee;
+  border: 1px solid #ccc;
+  font-size: 12px;
+}
+main section article table thead {
+  font-weight: 700;
+}
+main section article table thead tr {
+  background-color: #ccc !important;
 }
 main section article table tr {
-  border-bottom: 1px solid #eee;
+  border-left: 5px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 main section article table tr:nth-child(odd) {
   background-color: #f6f6f6;
@@ -173,4 +181,10 @@ main section article table tr td {
 }
 main section article table tr td small {
   font-size: 10px;
+}
+main section article table tr.red {
+  border-left: 5px solid red;
+}
+main section article table tr.green {
+  border-left: 5px solid green;
 }/*# sourceMappingURL=styles.css.map */
