@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load account %}
+
+{% block content %}
+
+    {% if user.is_authenticated  %}
+        
+        {% if not user.is_staff %}
+            <div>
+                <nav>
+                    <h3>NAV: BASE MEMBERS TEMPLATE</h3>
+                    <ul>
+                        <li><a href="{% url 'myprofile' %}">My Profile</a></li>
+                        <li><a href="{% url 'mybookings' %}">My Bookings (list to modal)</a></li>
+                        <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <small>Profile &gt;</small>
+                    {% block member_content %}{% endblock %}
+                </div>
+            </div>
+        {% endif %}
+        
+        {% if user.is_staff %}
+            <p>Redirect to dashboard...You are not a customer so you cannot view this page!</p>
+        {% endif %}
+        
+    {% else %}
+        <a href="{% url 'account_login' %}" class="loggedOut">Please sign in to view this page.</a>
+    {% endif %}
+
+{% endblock %}

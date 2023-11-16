@@ -24,7 +24,7 @@
         </div>
         <div class="authStatus">
             {% if user.is_authenticated %}
-                <a href="{% url 'account_email' %}">
+                <a href="{% url 'myprofile' %}">
                     <i class="fa-solid fa-circle-user"></i>
                 </a> 
                 <a href="{% url 'account_logout' %}">
@@ -55,13 +55,6 @@
     {% if user.is_authenticated %} 
     <nav class="container-fluid" style="background-color: #eee">        
         
-    <h3>AllAuth Profile</h3>
-    <p>1.<strong>{% user_display user %}</strong></p>
-    <p>2. <strong>{{ user_display }}</strong> has logged in...</p>
-    <p>3. In case you forgot, your username is <strong>{{ user }}</strong>.</p>
-    <p>Username: {{ user.username }}</p>
-    <p>Email: {{ user.email }}</p>
-    <p>Phone Number: {{ user.phone_number }}</p>
     
         This needs to me a Slide in menu        
         {% if user.is_staff %}

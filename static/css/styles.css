@@ -23,7 +23,6 @@ header, footer, main, nav, section, aside, article {
   display: block;
   float: left;
   width: 100%;
-  margin-bottom: 16px;
 }
 
 #hdr {
@@ -77,9 +76,16 @@ header, footer, main, nav, section, aside, article {
   transform: translate(0%, -50%);
 }
 
+main {
+  padding: 1em;
+}
 main a {
   color: #0071BC;
 }
 main a:hover {
   color: #013D5E;
+}
+main section {
+  padding: 1em;
+  background-color: #fff;
 }/*# sourceMappingURL=styles.css.map */

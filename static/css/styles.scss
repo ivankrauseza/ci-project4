@@ -23,7 +23,6 @@ header, footer, main, nav, section, aside, article {
     display: block;
     float: left;
     width: 100%;
-    margin-bottom: 16px;
 }
 
 #hdr {
@@ -78,10 +77,15 @@ header, footer, main, nav, section, aside, article {
 }
 
 main {
+    padding:1em;
     a {
         color: #0071BC;
         &:hover {
             color: #013D5E;
         }
+    }
+    section {
+        padding:1em;
+        background-color: #fff;
     }
 }
