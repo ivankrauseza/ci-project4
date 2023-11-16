@@ -5,6 +5,12 @@
 {% block dashboard_content %}
 
     <h2>All Bookings</h2>
+    <ul>
+        <li>fix admin display</li>
+        <li>fix modal form</li>
+        <li>staff should be able to cancel a booking (think phone call)</li>
+        <li>display: past,present,future</li>
+    </ul>
     <table>
         <thead>
             <tr>
@@ -20,11 +26,36 @@
                     <td>{{ item.member }}</td>
                     <td>{{ item.date }}</td>
                     <td>{{ item.created }}</td>
-                    <td>{% if item.cancel %}<span style="color:red">Yes</span>{% else%}<span style="color:green">No</span>{% endif%}</td>
+                    <td>
+                        {% if item.cancel %}<span style="color:red">Yes</span>{% else%}<span style="color:green">No</span>{% endif%}
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            View details
+                        </button>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li>View booking details</li>
+                    <li><button>edit/cancel</button></li>
+                </ul>
+                
+            </div>
+        </div>
+        </div>
+    </div>
 
 
 {% endblock %}

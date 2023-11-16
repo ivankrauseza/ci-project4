@@ -19,6 +19,14 @@ a {
   color: yellow;
 }
 
+.good {
+  color: green;
+}
+
+.bad {
+  color: red;
+}
+
 header, footer, main, nav, section, aside, article {
   display: block;
   float: left;
@@ -151,6 +159,19 @@ main section article {
   float: left;
   width: 100%;
   padding: 1em;
+}
+main section article ul.key {
+  float: left;
+  width: 100%;
+  margin: 0;
+  padding: 16px 0;
+  list-style: none;
+  font-size: 10px;
+}
+main section article ul.key li {
+  float: left;
+  width: auto;
+  margin-right: 1em;
 }
 main section article table {
   width: 100%;
