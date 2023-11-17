@@ -111,6 +111,13 @@ main section .hero_hme {
   background-color: #0071BC;
   background: url("/static/images/background_hme.jpg") 50% 0 no-repeat;
   background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main section .hero_hme .inner {
+  width: 100%;
+  height: 100%;
 }
 main section header {
   background-color: #fff;

@@ -110,6 +110,13 @@ main {
             background-color: #0071BC;
             background: url("/static/images/background_hme.jpg") 50% 0 no-repeat;
             background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .inner {
+                width: 100%;
+                height: 100%;
+            }
         }
         header {
             background-color: #fff;

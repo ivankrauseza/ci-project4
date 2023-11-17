@@ -14,12 +14,14 @@ Customers can book a workspace, Staff members can manage bookings, Superusers ca
 - python manage.py runserver (test admin)
 
 ## Authentication
-- pip install django-allauth
+- pip install django-allauth (add to installed apps)
+- pip install django-crispy-forms (add to installed apps)
 - configure settings.py and urls.py as per allauth documentation
 - settings.py > import os
 - settings.py > ALLOWED_HOSTS = ['localhost']
 - settings.py > SITE_ID = 1
 - settings.py > EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+- settings.py > CRISPY_TEMPLATE_PACK = 'uni_form'
 - ADMIN > /admin/account/emailaddress/ (verify admin email address)
 
 

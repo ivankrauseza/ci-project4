@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
 
 {% load account %}
 
@@ -7,28 +9,50 @@
 {% block content %}
 
     <div class="hero_hme">
-        <div class="temp">
-            <h3>Official Booking form:</h3>
-            <ol>
-                <li>Single location</li>
-                <li>Pick a day</li>
-                <li>Pick a time</li>
-                <li><button>Next</button></li>
-                <li>Your details</li>
-                <li>
-                    <button>Confirm</button>
-                    <small>Radio: Agree to account</small>
-                </li>
-            </ol>
+        <div class="inner">
+            <div class="container-xl">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 my-auto">
+                        {% if user.is_authenticated %}
+                        
+                        {% if user.is_staff %}
+                            staff can't make bookings
+                        {% endif %}
+                        {% if not user.is_staff %}
+                            <div class="temp">
+                                <h3>Official Booking form:</h3>
+                                <ol>
+                                    <li>Single location</li>
+                                    <li>Pick a day</li>
+                                    <li>Pick a time</li>
+                                    <li><button>Next</button></li>
+                                    <li>Your details</li>
+                                    <li>
+                                        <button>Confirm</button>
+                                        <small>Radio: Agree to account</small>
+                                    </li>
+                                </ol>
+                            </div>
+                        {% endif %}
+                        {% else %}
+                        <h1>A clean workspace, a comfy chair and great wifi!</h1>
+                        <h4>
+                            Be happy when working. Our pods are designed for you to
+                            maximise productivity while our facility offers you 
+                            everything you need to stay productive!
+                        </h4>
+                        {% endif %}
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <img src="{% static '/images/cubes.png' %}"/>
+                    </div>
+                </div>
+            </div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Launch demo modal
+            </button>
         </div>
-
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Launch demo modal
-        </button>
-
-
-        <div>if logged out, show login, if logged in, show booking form</div>
     </div>
     
   

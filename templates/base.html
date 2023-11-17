@@ -64,61 +64,6 @@
         <nav><a href="{% url 'index' %}">Home</a></nav>
     </footer>
     
-
-    {% if user.is_authenticated %} 
-    <nav class="container-fluid" style="background-color: #eee">        
-        
-    
-        This needs to me a Slide in menu        
-        {% if user.is_staff %}
-            <div style="background-color: lightpink">
-                <h2>Staff member</h2>
-                <h3>Dashboard</h3>
-                <nav>
-                    <ul>
-                        <li>Bookings (/bookings/all)</li>
-                        <li>Customers (/customers/all)</li>
-                    </ul>
-                </nav>
-                {% if not user.is_superuser %}
-                    <h3>My Profile</h3>
-                    <ul>
-                        <li>Request changes</li>
-                    </ul>
-                {% endif %}
-            </div>  
-        {% endif %}             
-        {% if user.is_superuser %}
-            <div style="background-color: lightgreen">
-                <h2>SuperUser Stuff</h2>
-                <p>Superuser can do everything that staf can do but also:</p>
-                <ul>
-                    <li>Manage Staff (/settings/)</li>
-                </ul>
-                <h3>My Profile</h3>
-                <ul>
-                    <li>Change Password</li>
-                    <li>Change Email</li>
-                </ul>
-            </div>
-        {% endif %}
-        
-        {% if not user.is_staff %}
-            <div style="background-color: lightblue">
-                <h2>Customer</h2>
-                <ul>
-                    <li>My Bookings</li>
-                    <li>My Profile (Name, Email, Password, Phone)</li>
-                    <li>Change Password</li>
-                    <li>Change Email</li>
-                </ul>
-            </div>
-        {% endif %}
-    {% else %}
-        </nav>
-{% endif %}
-
-    
     <script src="{% static 'js/scripts.js' %}"></script>
 
 </body>

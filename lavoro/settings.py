@@ -38,12 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    'crispy_forms',
     'booking',
     'dashboard',
     'members',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -63,12 +64,15 @@ ROOT_URLCONF = 'lavoro.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates', 'accounts')
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request', # `allauth` needs this from django
+                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -88,7 +92,8 @@ AUTHENTICATION_BACKENDS = [
 ACCOUNT_ADAPTER = "allauth.account.adapter.DefaultAccountAdapter"
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
-LOGIN_REDIRECT_URL = "/"
+# LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = 'custom_login_redirect'
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 ACCOUNT_CHANGE_EMAIL = True
 ACCOUNT_CONFIRM_EMAIL_ON_GET = False
@@ -100,6 +105,7 @@ ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = False
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_UNIQUE_EMAIL = True
 
+CRISPY_TEMPLATE_PACK = 'uni_form'
 
 # Provider specific settings
 SOCIALACCOUNT_PROVIDERS = {

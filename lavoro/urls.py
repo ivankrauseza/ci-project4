@@ -9,6 +9,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('custom-login-redirect/', views.custom_login_redirect, name='custom_login_redirect'),
     path('dashboard/', include('dashboard.urls')),
     path('profile/', include('members.urls')),
 ]
