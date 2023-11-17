@@ -45,6 +45,7 @@ Customers can book a workspace, Staff members can manage bookings, Superusers ca
 - favicon
 
 ## Bugs
+- FIXED: CSS background images not showing (path to static file needed to change)
 
 ## Resources
 - Favicon (https://favicon.io/)

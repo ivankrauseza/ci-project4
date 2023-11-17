@@ -1,9 +1,9 @@
-{% load static %}
 {% load account %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %} | Lavoro Workspaces</title><!-- Add this to your base.html template -->
@@ -58,7 +58,8 @@
         </section>
     </main>
     
-    <footer class="container-fluid">
+    <footer id="ftr" class="container-fluid">
+        <hr/>
         <p>&copy; 2023 Lavoro Workspaces</p>
         <nav><a href="{% url 'index' %}">Home</a></nav>
     </footer>

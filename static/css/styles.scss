@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 * {
@@ -24,6 +24,12 @@ a {
 }
 .bad {
     color: red;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    button {
+        float: right;
+    }
 }
 
 header, footer, main, nav, section, aside, article {
@@ -92,70 +98,81 @@ main {
         }
     }
     section {
-        padding:24px 96px;
-        background-color: #fff;
-        min-height: calc(100vh - 128px);
+        background-color: #f6f6f6;
         position: relative;
+        padding:0em;
+        .hero_hme {
+            color: #fff;
+            padding: 3em;
+            float: left;
+            width: 100%;
+            min-height:calc(100vh - 64px);
+            background-color: #0071BC;
+            background: url("/static/images/background_hme.jpg") 50% 0 no-repeat;
+            background-size: cover;
+        }
+        header {
+            background-color: #fff;
+            border-radius: 8px;
+            margin: 2em 0;
+            padding: 8px;
+            font-size: 12px;
+        }
         aside {
             float: left;
-            width: 64px;
-            position: absolute;
-            top: 16px;
-            left: 16px;
+            width: 100%;
             nav {
-                padding:0 1em;
+                padding:0;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background-color: #eee;
                 ul {
                     float: left;
                     margin: 0;
-                    width: 64px;
-                    padding: 0;
+                    width: 100%;
+                    padding:0;
                     list-style: none;
                     li {
-                        float: left;
                         width: auto;
                         font-size: 24px;
-                        padding: 8px 0;
+                        padding:0 0 16px 0;
                         text-align: center;
                         a {
-                            float: left;
+                            padding:8px;
+                            line-height: 24px;
                             width: auto;
                             color: #013D5E;
                             &:hover {
                                 color: #1A1A1A;
                             }
                             i {
+                                float: left;
+                                width: 48px;
+                                height: 24px;
                                 margin: 0 auto;
                                 border-radius: 8px;
-                                width: 24px;
-                                height: 24px;
                                 padding:0;
                             }
                             small {
                                 float: left;
-                                width: 100%;
-                                font-size: 11px;
-                                line-height:150%;
+                                width: auto;
+                                font-size: 12px;
                                 white-space: nowrap;
+                                margin-left: 8px;
+                                text-transform: uppercase;
                             }
                         }
                     }
                 }
                 &.members {
-                    color: lightcyan;
+                    background-color: none;
                 }
                 &.dashboard {
-                    color: lightgreen;
+                    background-color: none;
                 }
             }
         }
         article {
-            float: left;
-            width: 100%;
-            padding: 1em;
             ul.key {
                 float: left;
                 width: 100%;
@@ -169,19 +186,15 @@ main {
                     margin-right: 1em;
                 }
             }
+            .content {
+                border: 1px solid #eee;
+                border-radius: 8px;
+                background-color: #fff;
+                padding: 1em;
+            }
             table {
-                width: 100%;
-                border: 1px solid #ccc;
-                font-size: 12px;
-                thead {
-                    font-weight: 700;
-                    tr {
-                        background-color: #ccc!important;
-                    }
-                }
+                margin: 0!important;
                 tr {
-                    border-left:5px solid #ccc;
-                    border-bottom: 1px solid #ccc;
                     &:nth-child(odd) {
                         background-color: #f6f6f6;}
                     &:nth-child(even) {
@@ -197,10 +210,14 @@ main {
                         }
                     }
                     &.red {
-                        border-left:5px solid red;
+                        td {
+                            color: red;
+                        }
                     }
                     &.green {
-                        border-left:5px solid green;
+                        td {
+                            color: green;
+                        }
                     }
                 }
             }
@@ -208,11 +225,14 @@ main {
     }
 }
 
+#ftr {
+    font-size: 14px;
+}
+
 
 @media only screen and (max-width: 768px) {
     main {
         section {
-            padding:24px;
         aside {
             position: relative;
             margin: 0 0 16px 0;

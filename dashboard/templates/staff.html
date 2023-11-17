@@ -3,32 +3,40 @@
 {% block title %}Staff{% endblock %}
 
 {% block dashboard_content %}
-
-    <h2>Staff</h2>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Add New
-    </button>
     {% if user.is_superuser %}
-        <hr/>
-        <table>
-            {% for user in staff_users %}
+        <h2>
+            Staff
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                New
+            </button>
+        </h2>
+        <div class="content">
+            <table class="table">
+                <thead>
                 <tr>
-                    <td>
-                        {{ user.username }} | {{ user.email }}  - 
-                        <br/>
-                        <small>
-                            {% if user.is_superuser %}<span style="color:purple">Superuser</span>{% else %}<span style="color:blue">Staff member</span>{% endif %} |
-                            {% if user.is_active %}
-                            <a href="{% url 'disable_user' user.id %}" style="color:green">Enabled</a>
-                            {% else %}
-                            <a href="{% url 'disable_user' user.id %}" style="color:red">Disabled</a>
-                            {% endif %}
-                        </small>
-                    </td>
+                    <th scope="col">Staff Details</th>
                 </tr>
-            {% endfor %}
-        </table>
+                </thead>
+                <tbody>
+                {% for user in staff_users %}
+                    <tr>
+                        <td>
+                            {{ user.username }} | {{ user.email }}  - 
+                            <br/>
+                            <small>
+                                {% if user.is_superuser %}<span style="color:purple">Superuser</span>{% else %}<span style="color:blue">Staff member</span>{% endif %} |
+                                {% if user.is_active %}
+                                <a href="{% url 'disable_user' user.id %}" style="color:green">Enabled</a>
+                                {% else %}
+                                <a href="{% url 'disable_user' user.id %}" style="color:red">Disabled</a>
+                                {% endif %}
+                            </small>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     {% endif %}
 
     {% if not user.is_superuser %}

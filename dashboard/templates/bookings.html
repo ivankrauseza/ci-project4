@@ -1,42 +1,44 @@
 {% extends 'base_dashboard.html' %}
 
-{% block title %}All Bookings{% endblock %}
+{% block title %}Bookings{% endblock %}
 
 {% block dashboard_content %}
 
-    <h2>All Bookings</h2>
+    <h2>Bookings</h2>
     <ul>
         <li>fix admin display</li>
         <li>fix modal form</li>
         <li>staff should be able to cancel a booking (think phone call)</li>
         <li>display: past,present,future</li>
     </ul>
-    <table>
-        <thead>
+    <div class="content">
+        <table class="table">
+            <thead>
             <tr>
-                <td>Username</td>
-                <td>Date</td>
-                <td>Created</td>
-                <td>Cancelled?</td>
+                <th scope="col">Username</th>
+                <th scope="col">Date</th>
+                <th scope="col">Created</th>
+                <th scope="col">Cancelled?</th>
             </tr>
-        </thead>
-        <tbody>
-            {% for item in booking_data %}
-                <tr class="{% if item.cancel %}red{% else%}green{% endif%}">
-                    <td>{{ item.member }}</td>
-                    <td>{{ item.date }}</td>
-                    <td>{{ item.created }}</td>
-                    <td>
-                        {% if item.cancel %}<span style="color:red">Yes</span>{% else%}<span style="color:green">No</span>{% endif%}
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            View details
-                        </button>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for item in booking_data %}
+                    <tr class="{% if item.cancel %}red{% else%}green{% endif%}">
+                        <td>{{ item.member }}</td>
+                        <td>{{ item.date }}</td>
+                        <td>{{ item.created }}</td>
+                        <td>
+                            {% if item.cancel %}<span style="color:red">Yes</span>{% else%}<span style="color:green">No</span>{% endif%}
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                View details
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
