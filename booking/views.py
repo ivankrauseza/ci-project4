@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-
+from .models import *
+from django.contrib import messages
+from .forms import DemonstrationForm
 
 def index(request):
     return render(request, 'index.html')
@@ -11,6 +13,20 @@ def custom_login_redirect(request):
         if request.user.is_staff:
             return redirect('/dashboard')
         else:
-            return redirect('/profile')
+            return redirect('/')
     else:
         return redirect('login')
+
+
+def demo(request):
+    
+    if request.method == 'POST':
+        form = DemonstrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Data is saved!")
+            return redirect('demo')  # Redirect to a success page
+    else:
+        form = DemonstrationForm()
+
+    return render(request, 'demo.html', {'form': form})

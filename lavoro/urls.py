@@ -7,6 +7,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('demo/', views.demo, name='demo'),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('custom-login-redirect/', views.custom_login_redirect, name='custom_login_redirect'),

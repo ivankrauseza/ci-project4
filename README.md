@@ -24,6 +24,8 @@ Customers can book a workspace, Staff members can manage bookings, Superusers ca
 - settings.py > CRISPY_TEMPLATE_PACK = 'uni_form'
 - ADMIN > /admin/account/emailaddress/ (verify admin email address)
 
+## Form Submissions
+- settings.py > MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 ## Templates
 
@@ -47,7 +49,10 @@ Customers can book a workspace, Staff members can manage bookings, Superusers ca
 - favicon
 
 ## Bugs
-- FIXED: CSS background images not showing (path to static file needed to change)
+- FIXED: CSS: background images not showing (path to static file needed to change)
+- CALENDAR: User can manually edit calender field (prevent picking past date, only future)
 
 ## Resources
 - Favicon (https://favicon.io/)
+- https://jqueryui.com/datepicker/
+- FALSE: https://timepicker.co/

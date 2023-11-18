@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}Demonstration{% endblock %}
+
+{% block content %}
+    <div class="container-sm mt-5 mb-5">
+            <div class="row gy-5">
+                <div class="col-xs-12 col-sm-12">
+                    <p class="text-center">Curious?</p>
+                    <h1 class="text-center">Book a demonstration</h1>
+                </div>
+                <div class="col-xs-12 col-sm-6 my-auto">
+                    <h2>By Appointment only!</h2>
+                    <h5>
+                        Demonstrations are from Mondays to Fridays with 3 time slots per day (11am, 2pm, 7pm) 
+                        and are strictly by appointment only*.
+                        <br/>
+                    </h5>
+                    <small>*Please note that there may be a group of people viewing.</small>
+                    <h6>During the demonstration:</h6>
+                    <ul>
+                        <li>Please arrive at least 10 minutes before your slot.</li>
+                        <li>TODO: All fields required</li>
+                        <li>TODO: On save: Show reference number</li>
+                        <li>TODO: Join mailing list?</li>
+                        <li>TODO: Show messages properly and redirect to success?</li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-2"></div>
+                <div class="col-xs-12 col-sm-4">
+                    <h6>All fields are required:</h6>
+                    <hr/>
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <form method="post" action="{% url 'demo' %}">
+                        {% csrf_token %}
+
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="{{ form.name.id_for_label }}">
+                                <i class="fa-solid fa-signature"></i>
+                            </label>
+                            {{ form.demo_guest }}
+                            {{ form.demo_guest.errors }}
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="{{ form.email.id_for_label }}">
+                                <i class="fa-solid fa-envelope"></i>
+                            </label>
+                            {{ form.demo_email }}
+                            {{ form.demo_email.errors }}
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="{{ form.message.id_for_label }}">
+                                <i class="fa-solid fa-phone"></i>
+                            </label>
+                            {{ form.demo_phone }}
+                            {{ form.demo_phone.errors }}
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="{{ form.message.id_for_label }}">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </label>
+                            {{ form.demo_date }}
+                            {{ form.demo_date.errors }}
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="{{ form.message.id_for_label }}">
+                                <i class="fa-solid fa-clock"></i>
+                            </label>
+                            {{ form.demo_time }}
+                            {{ form.demo_time.errors }}
+                            </div>
+                            <button type="submit" class="btn btn-primary text-white mt-3 fPersian">Reserve my Slot</button>
+                    </form>
+                </div>
+            </div>
+            
+    </div>
+{% endblock %}

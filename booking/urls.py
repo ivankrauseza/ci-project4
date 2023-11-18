@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import custom_login_redirect
+from . import views
+
 
 urlpatterns = [
-    # Other URL patterns
+    path('demo', views.demo, name='demo'),
 ]
