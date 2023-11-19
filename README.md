@@ -1,5 +1,6 @@
 # ci-project4 - Lavoro Booking System
-Customers can book a workspace, Staff members can manage bookings, Superusers can manage everything.
+Lavaro ('Work' in Italian) is a company that provides shared office space, but also sells consumer pods to the general public for remote working. Customers can book a workspace, Staff members can manage bookings, Superusers can manage everything.
+
 ## Features
 - Guest: Book a demonstration
 - Customer: Sign up to become a member
@@ -56,8 +57,10 @@ Customers can book a workspace, Staff members can manage bookings, Superusers ca
 ## Bugs
 - FIXED: CSS: background images not showing (path to static file needed to change)
 - CALENDAR: User can manually edit calender field (prevent picking past date, only future)
+- FONTAWESOME: icons flashing on reload
 
 ## Resources
 - Favicon (https://favicon.io/)
 - https://jqueryui.com/datepicker/
 - FALSE: https://timepicker.co/
+- Google Fonts (Roboto)

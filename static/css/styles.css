@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;600;700&display=swap");
 body {
   margin: 0;
   font-size: 14px;
@@ -27,6 +28,9 @@ a {
   color: red;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Roboto Slab", serif;
+}
 h1 button, h2 button, h3 button, h4 button, h5 button, h6 button {
   float: right;
 }

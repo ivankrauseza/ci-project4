@@ -69,7 +69,7 @@
                         {% endif %}
                         {% else %}
                         <!--GUEST VIEW-->
-                        <div class="col-xs-12 col-sm-6">
+                        <div class="col-xs-12 col-sm-6 my-auto">
                             <h1>A comfy workspace and great wifi!</h1>
                             <h4>
                                 Our pods are designed for you to  maximise productivity 
@@ -79,7 +79,9 @@
                             <h6>Want to experience it in person?</h6>
                             <a href="{% url 'demo' %}" class="btn btn-success">Book a Demo</a>
                         </div>
-                        <div class="col-xs-12 col-sm-12">
+                        <div class="col-xs-12 col-sm-2"></div>
+                            <div class="col-xs-12 col-sm-4">
+                            <img src="{% static '/images/cubes.png' %}" style="max-width:256px;"/>
                         </div>
                     {% endif %}
 
