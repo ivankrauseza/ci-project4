@@ -19,7 +19,14 @@ $(document).ready(function () {
 
      var loc = window.location.href; // returns the full URL
     if(/dashboard/.test(loc)) {
-      $('#dashboard').addClass('active');
+      $('.linkDashboard').addClass('active');
     }
+
+    // Forms
+    $('button').each(function() {
+      if ($(this).is(':submit')) {
+        $(this).addClass('btn btn-primary');
+      }
+    });
 
 });
