@@ -18,8 +18,12 @@ def custom_login_redirect(request):
         return redirect('login')
 
 
+def demo_success(request):
+    return render(request, 'demo_success.html')
+
+
 def demo(request):
-    
+
     if request.method == 'POST':
         form = DemonstrationForm(request.POST)
         if form.is_valid():

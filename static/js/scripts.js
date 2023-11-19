@@ -16,4 +16,10 @@ $(document).ready(function () {
         e.preventDefault();
         $(this).attr("autocomplete", "off");  
      });
+
+     var loc = window.location.href; // returns the full URL
+    if(/dashboard/.test(loc)) {
+      $('#dashboard').addClass('active');
+    }
+
 });

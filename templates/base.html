@@ -34,7 +34,7 @@
             {% if user.is_authenticated %}
             
                 {% if user.is_staff %}
-                <a href="{% url 'dashboard' %}">
+                <a id="dashboard" href="{% url 'dashboard' %}">
                     <i class="fa-solid fa-gauge"></i>
                 </a> 
                 {% endif%}
