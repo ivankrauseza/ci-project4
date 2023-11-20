@@ -5,11 +5,35 @@
 {% block dashboard_content %}
 
     <h2>Dashboard</h2>
-    <ul>
-        <li>26 bookings today</li>
-        <li>12 new members this week</li>
-        <li>7 Support Tickets</li>
-    </ul>
-
-
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <div class="insight">
+                    <span class="count">
+                        {{ booking_data_count }}
+                    </span>
+                    <small>
+                        bookings today<br/>
+                        <a href="{% url 'bookings' %}">
+                            See all
+                        </a>
+                    </small>
+                </div>
+                 
+            </div>
+            <div class="col-3">
+                <div class="insight">
+                    <span class="count">
+                        {{ tour_data_count }}
+                    </span>
+                    <small>
+                        Tours today<br/>
+                        <a href="{% url 'tours' %}">
+                            See all
+                        </a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

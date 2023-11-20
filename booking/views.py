@@ -8,10 +8,8 @@ from .forms import DemonstrationForm
 def index(request):
     if request.user.is_authenticated:
         if request.user.is_staff:
-            # return render(request, 'dashboard.html')
             return redirect('/dashboard')
         else:
-            # return render(request, 'myprofile.html')
             return redirect('/profile')
     else:
         return render(request, 'index.html')

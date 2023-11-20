@@ -7,24 +7,27 @@
         <h2>
             Staff
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                New
+                Add New &#x2b;
             </button>
         </h2>
+        <h6>Team</h6>
         <div class="content">
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">Staff Details</th>
+                    <th scope="col" style="width:20%;">Email</th>
+                    <th scope="col" style="width:20%;">Status</th>
+                    <th scope="col" style="width:20%;">Superuser?</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for user in staff_users %}
                     <tr>
                         <td>
-                            {{ user.username }} | {{ user.email }}  - 
-                            <br/>
+                            {{ user.email }}
+                        </td>
+                        <td>
                             <small>
-                                {% if user.is_superuser %}<span style="color:purple">Superuser</span>{% else %}<span style="color:blue">Staff member</span>{% endif %} |
                                 {% if user.is_active %}
                                 <a href="{% url 'disable_user' user.id %}" style="color:green">Enabled</a>
                                 {% else %}
@@ -32,11 +35,48 @@
                                 {% endif %}
                             </small>
                         </td>
+                        <td>
+                            {% if not user.is_superuser %}
+                                {% if user.is_active %}
+                                <a href="{% url 'toggle_superuser' user.id %}" style="color:red">
+                                    Create Superuser
+                                </a>
+                                {% endif %}
+                            {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
+
         </div>
+
+        <h6>Superuser</h6>
+        <div class="content">
+                
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Superuser</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in super_users %}
+                    <tr>
+                        <td>
+                            {{ user.email }} | {{ user.username }} 
+                            <br/>
+                            <small>
+                               {% if user.is_superuser %}
+                                <a href="{% url 'toggle_superuser' user.id %}" style="color:red">Remove</a>
+                                {% endif %}
+                            </small>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
     {% endif %}
 
     {% if not user.is_superuser %}
