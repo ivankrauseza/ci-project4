@@ -6,11 +6,18 @@
 
 {% block content %}
 
+    <ul style="position: fixed; top: 64px;">
+        <li>Intro (scroll up of down)</li>
+        <li>About (scroll down)</li>
+        <li>Find us (scroll down)</li>
+    </ul>
     <div class="hero_hme">
         <div class="inner">
             <div class="container-xl">
                 <div class="row">
                     <!--GUEST VIEW-->
+                    <div class="col-xs-12 col-sm-12">
+                    </div>
                     <div class="col-xs-12 col-sm-6 my-auto">
                         <h1>Shared Office Space</h1>
                         <h4>A comfy workspace and great wifi!</h4>
@@ -18,9 +25,6 @@
                             Our pods are designed for you to  maximise productivity 
                             while our facility offers you comfort at every level!
                         </p>
-                        <hr/>
-                        <h6>Facility Tours</h6>
-                        <a href="{% url 'demo' %}" class="btn btn-success">Book Now</a>
                     </div>
                     <div class="col-xs-12 col-sm-2"></div>
                         <div class="col-xs-12 col-sm-4">
@@ -28,6 +32,19 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="about_hme">
+        <div class="inner">
+            <p>About</p>
+            <hr/>
+            <h6>Facility Tours</h6>
+            <a href="{% url 'demo' %}" class="btn btn-success">Book Now</a>
+        </div>
+    </div>
+    <div class="map_hme">
+        <div class="inner">
+            Find Us
         </div>
     </div>
     

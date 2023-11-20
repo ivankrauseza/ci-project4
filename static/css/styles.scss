@@ -3,7 +3,7 @@
 body {
     margin: 0;
     font-size: 16px;
-    background-color: #333;
+    background-color: #fff;
 }
 
 * {
@@ -104,13 +104,44 @@ main {
         padding: 64px 0 0 0;
         min-height:calc(100vh);
         .hero_hme {
-            color: #333;
+            color: #fff;
             padding: 3em;
             float: left;
             width: 100%;
-            min-height:calc(100vh - 64px);
-            background-color: #0071BC;
-            background: url("/static/images/background_hme.jpg") 50% 0 no-repeat;
+            min-height:calc(75vh - 64px);
+            background-color: purple;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .inner {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .about_hme {
+            color: #fff;
+            padding: 3em;
+            float: left;
+            width: 100%;
+            min-height:calc(75vh - 64px);
+            background-color: gold;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .inner {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .map_hme {
+            color: #fff;
+            padding: 3em;
+            float: left;
+            width: 100%;
+            min-height:calc(75vh - 64px);
+            background-color: orange;
             background-size: cover;
             display: flex;
             align-items: center;
@@ -161,12 +192,6 @@ main {
                             }
                         }
                     }
-                }
-                &.members {
-                    background-color: none;
-                }
-                &.dashboard {
-                    background-color: none;
                 }
             }
         }
@@ -234,8 +259,8 @@ main {
 #ftr {
     font-size: 12px;
     font-weight: 700;
-    background-color: #333;
-    color: #eee;
+    background-color: #fff;
+    color: #333;
     padding: 2em;
     p {
         margin: 0;

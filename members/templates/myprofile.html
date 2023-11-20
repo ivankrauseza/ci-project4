@@ -7,5 +7,6 @@
     <h2>My Profile</h2>
     <p>Username: {{ user.username }} / {{ user }}</p>
     <p>Email: {{ user.email }} ... <a href="{% url 'account_email' %}">change</a></p>
+    <p>Change password ... <a href="{% url 'account_change_password' %}">change</a></p>
 
 {% endblock %}
