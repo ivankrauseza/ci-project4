@@ -2,8 +2,6 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
-{% load account %}
-
 {% block title %}Home{% endblock %}
 
 {% block content %}
@@ -12,70 +10,22 @@
         <div class="inner">
             <div class="container-xl">
                 <div class="row">
-
-                    {% if user.is_authenticated %}
-                        {% if user.is_staff %}
-                        <!--ADMIN VIEW-->
-                            <div class="col-xs-12 col-sm-4">
-                                <a href="{% url 'dashboard' %}" style="font-size: 96px;">
-                                    <i class="fa-solid fa-gauge"></i>
-                                    <small style="font-size: 24px;">Facility Tours</small>
-                                </a>
-                            </div>
-                            <div class="col-xs-12 col-sm-4">
-                                <a href="{% url 'members' %}" style="font-size: 96px;">
-                                    <i class="fa-solid fa-people-group"></i>
-                                    <small style="font-size: 24px;">Members</small>
-                                </a>
-                            </div>
-                            <div class="col-xs-12 col-sm-4">
-                                <a href="{% url 'bookings' %}" style="font-size: 96px;">
-                                    <i class="fa-solid fa-clipboard-list"></i>
-                                    <small style="font-size: 24px;">Bookings</small>
-                                </a>
-                            </div>
-                        {% endif %}
-                        {% if not user.is_staff %}
-                        <!--CUSTOMER VIEW-->
-                        <div class="col-xs-12 col-sm-6 my-auto">
-                            <div class="temp">
-                                <h3>Official Booking form:</h3>
-                                <ol>
-                                    <li>Single location</li>
-                                    <li>Pick a day</li>
-                                    <li>Pick a time</li>
-                                    <li><button>Next</button></li>
-                                    <li>Your details</li>
-                                    <li>
-                                        <button>Confirm</button>
-                                        <small>Radio: Agree to account</small>
-                                    </li>
-                                </ol>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6">
-                            <img src="{% static '/images/cubes.png' %}" style="max-width:512px;"/>
-                        </div>
-                        {% endif %}
-                        {% else %}
-                        <!--GUEST VIEW-->
-                        <div class="col-xs-12 col-sm-6 my-auto">
-                            <h1>Shared Office Space</h1>
-                            <h4>A comfy workspace and great wifi!</h4>
-                            <p>
-                                Our pods are designed for you to  maximise productivity 
-                                while our facility offers you comfort at every level!
-                            </p>
-                            <hr/>
-                            <h6>Facility Tours</h6>
-                            <a href="{% url 'demo' %}" class="btn btn-success">Book Now</a>
-                        </div>
-                        <div class="col-xs-12 col-sm-2"></div>
-                            <div class="col-xs-12 col-sm-4">
-                            <img src="{% static '/images/cubes.png' %}"/>
-                        </div>
-                    {% endif %}
-
+                    <!--GUEST VIEW-->
+                    <div class="col-xs-12 col-sm-6 my-auto">
+                        <h1>Shared Office Space</h1>
+                        <h4>A comfy workspace and great wifi!</h4>
+                        <p>
+                            Our pods are designed for you to  maximise productivity 
+                            while our facility offers you comfort at every level!
+                        </p>
+                        <hr/>
+                        <h6>Facility Tours</h6>
+                        <a href="{% url 'demo' %}" class="btn btn-success">Book Now</a>
+                    </div>
+                    <div class="col-xs-12 col-sm-2"></div>
+                        <div class="col-xs-12 col-sm-4">
+                        <img src="{% static '/images/cubes.png' %}"/>
+                    </div>
                 </div>
             </div>
         </div>

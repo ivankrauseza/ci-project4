@@ -4,14 +4,23 @@ from .models import *
 from django.contrib import messages
 from .forms import DemonstrationForm
 
+
 def index(request):
-    return render(request, 'index.html')
+    if request.user.is_authenticated:
+        if request.user.is_staff:
+            # return render(request, 'dashboard.html')
+            return redirect('/dashboard')
+        else:
+            # return render(request, 'myprofile.html')
+            return redirect('/profile')
+    else:
+        return render(request, 'index.html')
 
 
 def custom_login_redirect(request):
     if request.user.is_authenticated:
         if request.user.is_staff:
-            return redirect('/dashboard')
+            return redirect('/')
         else:
             return redirect('/')
     else:

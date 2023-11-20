@@ -24,7 +24,7 @@
     <header id="hdr" class="container-fluid">
         <div class="logo">
             <a href="{% url 'index' %}">
-                <img src="{% static '/images/logo.png' %}" width="102px" height="40px" alt="lavoro workspaces logo"/>
+                <img src="{% static '/images/logo.png' %}" height="64px" alt="lavoro workspaces logo"/>
             </a>
         </div>
         <div class="strapline">
@@ -32,26 +32,12 @@
         </div>
         <div class="authStatus">
             {% if user.is_authenticated %}
-            
-                {% if user.is_staff %}
-                <a class="linkDashboard" href="{% url 'dashboard' %}">
-                    <i class="fa-solid fa-gauge"></i>
-                </a> 
-                {% endif%}
-                {% if not user.is_staff %}
-                <a href="{% url 'index' %}">
-                    <i class="fa-solid fa-square-plus"></i>
-                </a>
-                <a href="{% url 'myprofile' %}">
-                    <i class="fa-solid fa-address-card"></i>
-                </a> 
-                {% endif%}
                 <a href="{% url 'account_logout' %}">
-                    <i class="fa-solid fa-xmark"></i>
+                    Log out
                 </a>
             {% else %}
-                <a href="{% url 'account_login' %}" class="loggedOut">
-                    <i class="fa-regular fa-user"></i>
+                <a href="{% url 'account_login' %}">
+                    Login
                 </a>
             {% endif %}
         </div>

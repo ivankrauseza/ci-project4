@@ -16,11 +16,16 @@ $(document).ready(function () {
         e.preventDefault();
         $(this).attr("autocomplete", "off");  
      });
-
-     var loc = window.location.href; // returns the full URL
-    if(/dashboard/.test(loc)) {
-      $('.linkDashboard').addClass('active');
-    }
+    
+      // Get the current URL path
+      var currentPath = window.location.pathname;
+      $('a').each(function() {
+        var hrefValue = $(this).attr('href');
+        if (hrefValue === currentPath) {
+          $(this).addClass('active');
+        } else {
+        }
+      });
 
     // Forms
     $('button').each(function() {

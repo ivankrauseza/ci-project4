@@ -52,8 +52,8 @@ header, footer, main, nav, section, aside, article {
     position: fixed;
     height: 64px;
     line-height: 40px;
-    padding: 12px 16px;
-    background: rgba(220,220,220,0.9);
+    padding: 0 16px;
+    background: rgba(220,220,220,1);
     color: #fff;
     .logo {
         float: left;
@@ -74,8 +74,8 @@ header, footer, main, nav, section, aside, article {
         text-transform: uppercase;
         a {
             display: inline-block;
-            height: 40px;
-            line-height: 40px;
+            height: 64px;
+            line-height: 64px;
             border-radius: 12px;
             color: #1A1A1A;
             position: relative;
@@ -85,15 +85,6 @@ header, footer, main, nav, section, aside, article {
             i {
                 font-size: 24px;
                 margin: 8px;
-            }
-            &.loggedOut::before {
-                content: 'Login';
-                width: auto;
-                text-wrap:nowrap;
-                position: absolute;
-                right: 100%;
-                top:50%;
-                transform: translate(-0%,-50%);
             }
         }
     }
@@ -133,7 +124,7 @@ main {
             float: left;
             width: 100%;
             nav {
-                padding:0;
+                padding:1em 0;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -145,14 +136,14 @@ main {
                     list-style: none;
                     li {
                         width: auto;
-                        font-size: 24px;
-                        padding:0 0 16px 0;
+                        padding:0 0 24px 0;
                         text-align: center;
                         a {
                             padding:8px;
                             line-height: 24px;
                             width: auto;
                             i {
+                                font-size: 24px;
                                 float: left;
                                 width: 48px;
                                 height: 24px;
@@ -180,6 +171,7 @@ main {
             }
         }
         article {
+            padding:1em 0;
             header {
                 background-color: #fff;
                 border-radius: 8px;
@@ -284,5 +276,5 @@ main {
   }
 
   .active {
-    color: pink!important;
+    color: purple!important;
   }
