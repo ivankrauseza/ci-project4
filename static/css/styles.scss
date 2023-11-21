@@ -38,6 +38,12 @@ h1, h2, h3, h4, h5, h6 {
     button {
         float: right;
     }
+    small {
+        font-size: 14px!important;
+    }
+}
+h6 {
+    margin: 1em 0;
 }
 
 header, footer, main, nav, section, aside, article {
@@ -122,12 +128,11 @@ main {
         }
         aside {
             float: left;
-            width: auto;
+            width: 100%;
             nav {
+                float: left;
+                width: 100%;
                 padding:1em 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
                 ul {
                     float: left;
                     margin: 0;
@@ -237,6 +242,12 @@ main {
             }
         }
     }
+}
+
+.usp {
+    border: 1px solid #eee;
+    background-color: #fff;
+    border-radius: 8px;
 }
 
 #ftr {

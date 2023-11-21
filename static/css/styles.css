@@ -39,6 +39,13 @@ h1, h2, h3, h4, h5, h6 {
 h1 button, h2 button, h3 button, h4 button, h5 button, h6 button {
   float: right;
 }
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+  font-size: 14px !important;
+}
+
+h6 {
+  margin: 1em 0;
+}
 
 header, footer, main, nav, section, aside, article {
   display: block;
@@ -124,13 +131,12 @@ main section .hero_hme .inner {
 }
 main section aside {
   float: left;
-  width: auto;
+  width: 100%;
 }
 main section aside nav {
+  float: left;
+  width: 100%;
   padding: 1em 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 main section aside nav ul {
   float: left;
@@ -232,6 +238,12 @@ main section article table tr.red td {
 }
 main section article table tr.green td {
   color: green;
+}
+
+.usp {
+  border: 1px solid #eee;
+  background-color: #fff;
+  border-radius: 8px;
 }
 
 #ftr {

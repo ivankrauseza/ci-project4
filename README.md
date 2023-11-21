@@ -65,3 +65,4 @@ Lavaro ('Work' in Italian) is a company that provides shared office space, but a
 - FALSE: https://timepicker.co/
 - Google Fonts (Roboto)
 - Logo Icon https://www.freepik.com/free-vector/lion-fire-gradient-mascot-illustration-logo-design_54089107.htm#query=flame%20head&position=18&from_view=search&track=ais&uuid=17e479dc-1bd0-4830-8e21-a8fb72937208
+- Meeting image : https://www.freepik.com/free-vector/social-distancing-meeting-illustration-theme_8256854.htm#query=meeting%20room&position=0&from_view=search&track=ais&uuid=57a3fe96-1158-4868-8372-122d8170d273

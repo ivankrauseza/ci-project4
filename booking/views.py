@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
 from .models import *
 from django.contrib import messages
 from .forms import DemonstrationForm
@@ -41,3 +40,15 @@ def demo(request):
         form = DemonstrationForm()
 
     return render(request, 'demo.html', {'form': form})
+
+
+def workspace(request):
+    return render(request, 'workspace.html')
+
+
+def meeting(request):
+    return render(request, 'meeting.html')
+
+
+def cafe(request):
+    return render(request, 'cafe.html')

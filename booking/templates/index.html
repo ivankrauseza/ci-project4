@@ -8,13 +8,34 @@
 
     <div class="hero_hme">
         <div class="inner">
-            <div class="container-xl">
+            <div class="container-lg">
                 <div class="row">
                     <!--GUEST VIEW-->
-                    <div class="col-xs-12 col-sm-6 my-auto">
-                        <h1>Shared Office Space</h1>
-                        <h4>A comfy workspace and great wifi!</h4>
-                        <p>Become a member and get discounted benfits</p>
+                    <div class="col-xs-12 col-sm-4 my-auto text-center">
+                        <a href="{% url 'workspace' %}">
+                            <img src="{% static '/images/workspace.png' %}"/>
+                            <h2>Shared Office Space</h2>
+                            <h4>A comfy workspace and great wifi!</h4>
+                            <p>All welcome</p>
+                        </a>
+                    </div>
+                    <!--GUEST VIEW-->
+                    <div class="col-xs-12 col-sm-4 my-auto text-center">
+                        <a href="{% url 'meeting' %}">
+                            <img src="{% static '/images/meeting_room.png' %}"/>
+                            <h2>Meeting Rooms</h2>
+                            <h4>Modern and stylish!</h4>
+                            <p>Members only</p>
+                        </a>
+                    </div>
+                    <!--GUEST VIEW-->
+                    <div class="col-xs-12 col-sm-4 my-auto text-center">
+                        <a href="{% url 'cafe' %}">
+                            <img src="{% static '/images/cafe.png' %}"/>
+                            <h2>The Daily Grind Cafe</h2>
+                            <h4>Modern and stylish!</h4>
+                            <p>All welcome</p>
+                        </a>
                     </div>
                 </div>
             </div>
