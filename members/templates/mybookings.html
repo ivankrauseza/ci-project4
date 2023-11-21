@@ -87,34 +87,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{% url 'bookings' %}">
-                    {% csrf_token %}
-
-                    <div class="input-group mb-3">
-                        <label class="input-group-text" for="{{ form.name.id_for_label }}">
-                            <i class="fa-solid fa-signature"></i>
-                        </label>
-                        {{ form.member }}
-                        {{ form.member.errors }}
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <label class="input-group-text" for="{{ form.email.id_for_label }}">
-                            <i class="fa-solid fa-envelope"></i>
-                        </label>
-                        {{ form.date }}
-                        {{ form.date.errors }}
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <label class="input-group-text" for="{{ form.message.id_for_label }}">
-                            <i class="fa-solid fa-phone"></i>
-                        </label>
-                        {{ form.meal }}
-                        {{ form.meal.errors }}
-                    </div>
-                        <button type="submit" class="btn btn-primary text-white mt-3 fPersian">Submit Booking</button>
-                </form>
+                something else...
             </div>
         </div>
         </div>

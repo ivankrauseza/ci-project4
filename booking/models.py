@@ -4,14 +4,27 @@ from django.core.validators import RegexValidator
 from django.contrib.auth.models import User
 
 
-class Booking(models.Model):
-    admin = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    member = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    booked = models.BooleanField(default=False, blank=True)
+class MeetingRoom(models.Model):
+    admin = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField()
+    booked = models.BooleanField(default=False)
+
+
+class Booking(models.Model):
+
+    MEAL = (
+        ("NONE", "NONE"),
+        ("BEEF", "BEEF"),
+        ("CHICKEN", "CHICKEN"),
+        ("VEGETARIAN", "VEGETARIAN"),
+    )
+
+    member = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    date = models.DateTimeField(default=datetime.now, null=True)
     created = models.DateTimeField(default=datetime.now, null=True)
+    cancel = models.BooleanField(default=False, blank=True)
     cancelwhen = models.DateTimeField(default=datetime.now, null=True)
-    request = models.TextField(default="", null=True)
+    meal = models.CharField(max_length=99, choices=MEAL, default="NONE")
 
 
 class Demonstration(models.Model):
