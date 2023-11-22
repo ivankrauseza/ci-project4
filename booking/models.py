@@ -4,10 +4,48 @@ from django.core.validators import RegexValidator
 from django.contrib.auth.models import User
 
 
-class MeetingRoom(models.Model):
+class Calendar(models.Model):
+
+    class Meta:
+        ordering = ['date']
+
+    name = models.CharField(default="", max_length=255)
     admin = models.ForeignKey(User, on_delete=models.CASCADE)
-    date = models.DateField()
+    date = models.CharField(default="", max_length=255)
     booked = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
+
+
+class CalendarInstance(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Calendar Entries'
+
+    title = models.CharField(default="Meeting Room", max_length=255)
+    owner = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    date = models.ForeignKey(Calendar, null=True, on_delete=models.CASCADE)
+    request = models.TextField(blank=True, null=True)
+    booked = models.BooleanField(default=False)
+    START_TIME = (
+        ('09:00', '09:00'),
+        ('12:00', '12:00'),
+        ('15:00', '15:00'),
+    )
+    start_time = models.CharField(
+        max_length=10,
+        choices=START_TIME,
+        blank=True,
+        default='9am',
+    )
+
+    def __str__(self):
+        return self.title
+
+    @property
+    def calendar_name(self):
+        return self.date
 
 
 class Booking(models.Model):

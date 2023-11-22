@@ -1,0 +1,10 @@
+{% extends 'base_dashboard.html' %}
+
+{% block title %}Bookings{% endblock %}
+
+{% block dashboard_content %}
+<h1>{{ your_object.title }} Detail</h1>
+    <p>{{ your_object.request }}</p>
+    {{ your_object.id }}
+    <a href="../{{ your_object.id }}" class="btn">Edit</a>
+{% endblock %}

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Demonstration
+from .models import Demonstration, CalendarInstance
 
 
 class DemonstrationForm(forms.ModelForm):
@@ -28,3 +28,15 @@ class DemonstrationForm(forms.ModelForm):
         self.fields['demo_time'].widget.attrs.update({
             'class': 'form-control'
             }),
+
+
+class CalendarInstanceForm(forms.ModelForm):
+    class Meta:
+        model = CalendarInstance
+        fields = ['request', 'booked']
+        labels = {'request': 'Need anything special?'}
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['placeholder'] = visible.field.label

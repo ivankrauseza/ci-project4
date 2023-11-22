@@ -50,9 +50,9 @@
     </main>
     
     <footer id="ftr" class="container-fluid">
-        <p>
+        <small style="float: left; width: auto;">
             &copy; 2023 Lavoro Workspaces
-        </p>
+        </small>
         
         {% if messages %}
         <ul class="messages">
@@ -61,6 +61,12 @@
             {% endfor %}
         </ul>
         {% endif %}
+        
+    {% if user.is_authenticated  %}   
+    {% if user.is_staff %}
+        <small style="float: right; width: auto;">You are logged in as: <strong>{{ user.username }}</strong></small>
+    {% endif %}
+    {% endif %}
     </footer>
     
     <script src="{% static 'js/scripts.js' %}"></script>

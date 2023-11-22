@@ -33,6 +33,10 @@ img {
   color: red;
 }
 
+.none {
+  color: grey;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto Slab", serif;
 }
@@ -60,8 +64,9 @@ header, footer, main, nav, section, aside, article {
   height: 64px;
   line-height: 40px;
   padding: 0 16px;
-  background: rgb(220, 220, 220);
+  background: #fff;
   color: #fff;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
 }
 #hdr .logo {
   float: left;
@@ -101,13 +106,13 @@ main {
   padding: 0em;
 }
 main a {
-  color: #0071BC;
+  color: #0088ff;
 }
 main a:hover {
   color: #013D5E;
 }
 main section {
-  background-color: #f6f6f6;
+  background-color: #edf8fc;
   position: relative;
   padding: 64px 0 0 0;
   min-height: 100vh;
@@ -118,7 +123,7 @@ main section .hero_hme {
   float: left;
   width: 100%;
   min-height: calc(100vh - 64px);
-  background-color: purple;
+  background-color: #4a229c;
   background: url("/static/images/background_hme.jpg") 50% 0 no-repeat;
   background-size: cover;
   display: flex;
@@ -246,11 +251,33 @@ main section article table tr.green td {
   border-radius: 8px;
 }
 
+ul.calendarInstance {
+  float: left;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ul.calendarInstance li {
+  float: left;
+  width: 8%;
+  margin: 1%;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1%;
+  text-align: center;
+}
+
 #ftr {
+  position: fixed;
+  bottom: 0;
+  left: 0;
   font-size: 12px;
-  background-color: #333;
-  color: #eee;
-  padding: 1em 2em;
+  background-color: #fff;
+  color: #0088ff;
+  padding: 0 16px;
+  line-height: 32px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
 }
 #ftr p {
   margin: 0;
@@ -284,5 +311,5 @@ main section article table tr.green td {
   }
 }
 .active {
-  color: purple !important;
+  color: #4a229c !important;
 }/*# sourceMappingURL=styles.css.map */

@@ -5,12 +5,13 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.management import call_command
 from django.contrib.auth.decorators import login_required
-from booking.models import Booking, Demonstration
+from booking.models import Booking, Demonstration, Calendar, CalendarInstance
 from django.contrib.auth.models import User
 # Disable User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from datetime import date
+from datetime import date, datetime
+from booking.forms import CalendarInstanceForm
 
 
 # User = get_user_model()
@@ -37,8 +38,42 @@ def tours(request):
 
 @login_required
 def bookings(request):
-    booking_data = Booking.objects.all()
-    return render(request, 'bookings.html', {'booking_data': booking_data})
+    cal_data = Calendar.objects.all()
+    today = datetime.now()
+    js_timestamp = int(today.timestamp() * 1000)
+    cal_instance = CalendarInstance.objects.filter(date__gte=js_timestamp)
+
+    context = {
+        'cal_data': cal_data,
+        'cal_instance': cal_instance,
+    }
+
+    return render(request, 'bookings.html', context)
+
+
+@login_required
+def bookings_update(request, pk):
+    record = CalendarInstance.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = CalendarInstanceForm(request.POST, instance=record)
+        if form.is_valid():
+            form.save()
+            return redirect('bookings')
+    else:
+        form = CalendarInstanceForm(instance=record)
+
+    context = {
+        'record': record,
+        'form': form
+    }
+    return render(request, 'update_record.html', context)
+
+
+@login_required
+def bookings_view(request, pk):
+    your_object = get_object_or_404(CalendarInstance, pk=pk)
+    return render(request, 'view_record.html', {'your_object': your_object})
 
 
 def members(request):
