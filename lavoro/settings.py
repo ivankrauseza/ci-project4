@@ -93,7 +93,7 @@ ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
 # LOGIN_REDIRECT_URL = "/"
 LOGIN_REDIRECT_URL = 'clr'
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
-ACCOUNT_CHANGE_EMAIL = True
+ACCOUNT_CHANGE_EMAIL = False
 ACCOUNT_CONFIRM_EMAIL_ON_GET = False
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = None
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
@@ -128,10 +128,6 @@ WSGI_APPLICATION = 'lavoro.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-    # 'default': {
-    # 'ENGINE': 'django.db.backends.sqlite3',
-    # 'NAME': BASE_DIR / 'db.sqlite3',
-    # }
 }
 
 
