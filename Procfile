@@ -1,1 +1,1 @@
-web: gunicorn lavoro.wsgi:application
+web: gunicorn lavoro.wsgi
