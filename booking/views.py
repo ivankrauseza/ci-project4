@@ -21,15 +21,3 @@ def clr(request):
             return redirect('/')
     else:
         return redirect('login')
-
-
-def workspace(request):
-    return render(request, 'workspace.html')
-
-
-def meeting(request):
-    return render(request, 'meeting.html')
-
-
-def cafe(request):
-    return render(request, 'cafe.html')
