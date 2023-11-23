@@ -9,20 +9,18 @@
 {% block content %}
 <div class="container-sm p-5">
     <div class="row">
-        <div class="col">
+        <div class="col-sm-4">
     {% element h1 %}
         {% trans "Login" %}
     {% endelement %}
-    <p>
-        {% blocktrans %}If you have not created an account yet, then please
-    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
-    </p>
     {% url 'account_login' as login_url %}
     {% element form form=form method="post" action=login_url tags="entrance,login" %}
         {% slot body %}
             {% csrf_token %}
-            {% element fields form=form unlabeled=True %}
-            {% endelement %}
+            <div class="allauthfields">
+                {% element fields form=form unlabeled=True %}
+                {% endelement %}
+            </div>
             {% if redirect_field_value %}
                 <input type="hidden"
                        name="{{ redirect_field_name }}"
@@ -35,8 +33,14 @@
             {% endelement %}
         {% endslot %}
     {% endelement %}
+    <hr/>
+    <p>
+        {% blocktrans %}No account? <a href="{{ signup_url }}">Sign Up</a>{% endblocktrans %}
+    </p>
+
     {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
 </div>
+<div class="col-sm-6"></div>
 </div>
 </div>
 {% endblock content %}

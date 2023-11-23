@@ -3,32 +3,16 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block dashboard_content %}
-
-    <h2>Dashboard</h2>
     <div class="container-fluid">
         <div class="row">
             <div class="col-3">
                 <div class="insight">
                     <span class="count">
-                        {{ booking_data_count }}
+                        {{ open_appointments }}
                     </span>
                     <small>
-                        bookings today<br/>
-                        <a href="{% url 'bookings' %}">
-                            See all
-                        </a>
-                    </small>
-                </div>
-                 
-            </div>
-            <div class="col-3">
-                <div class="insight">
-                    <span class="count">
-                        {{ tour_data_count }}
-                    </span>
-                    <small>
-                        Tours today<br/>
-                        <a href="{% url 'tours' %}">
+                        Open Appointments<br/>
+                        <a href="{% url 'patients' %}">
                             See all
                         </a>
                     </small>

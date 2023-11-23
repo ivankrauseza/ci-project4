@@ -1,0 +1,15 @@
+{% extends 'base_members.html' %}
+
+{% block title %}Delete Appointment{% endblock %}
+
+{% block member_content %}
+    <a href="{% url 'appointments' %}">&lt; Back to Bookings</a>
+    <hr/>
+    <h2>Confirm cancellation</h2>
+    <p>Are you sure you want to cancel your appointment for {{ post.app_date }} @ {{ post.app_time }}?</p>
+    <form method="post" action="{% url 'appointments_delete' post.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Cancel booking</button>
+    </form>
+
+{% endblock %}

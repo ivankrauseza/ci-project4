@@ -51,7 +51,7 @@
 
         </div>
 
-        <h6>Superuser</h6>
+        <h6>Additional Superusers</h6>
         <div class="content">
                 
             <table class="table">
@@ -68,7 +68,9 @@
                             <br/>
                             <small>
                                {% if user.is_superuser %}
-                                <a href="{% url 'toggle_superuser' user.id %}" style="color:red">Remove</a>
+                                {% if not user.username == 'admin' %}
+                                    <a href="{% url 'toggle_superuser' user.id %}" style="color:red">Remove</a>
+                                {% endif %}
                                 {% endif %}
                             </small>
                         </td>

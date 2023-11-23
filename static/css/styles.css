@@ -38,7 +38,8 @@ img {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 h1 button, h2 button, h3 button, h4 button, h5 button, h6 button {
   float: right;
@@ -58,6 +59,7 @@ header, footer, main, nav, section, aside, article {
 }
 
 #hdr {
+  border-top: 1px solid #eee;
   position: relative;
   z-index: 2;
   position: fixed;
@@ -180,15 +182,18 @@ main section aside nav ul li a small {
 main section article {
   padding: 1em 0;
 }
-main section article h2 {
-  margin: 0.5em 0;
-}
 main section article header {
   background-color: #fff;
   border-radius: 8px;
   margin: 0 0 2em 0;
   padding: 8px;
   font-size: 12px;
+}
+main section article h2 {
+  margin-bottom: 1em;
+}
+main section article p {
+  max-width: 768px;
 }
 main section article ul.key {
   float: left;
@@ -205,10 +210,16 @@ main section article ul.key li {
 }
 main section article .content {
   border: 1px solid #eee;
+  border-bottom: 4px solid #eee;
   border-radius: 8px;
   background-color: #fff;
   padding: 1em;
   margin-bottom: 2em;
+}
+main section article .content hr {
+  border: none;
+  border-bottom: 1px dashed #0088ff;
+  opacity: 0.25;
 }
 main section article .insight {
   float: left;
@@ -289,6 +300,10 @@ ul.calendarInstance li {
 #ftr nav a {
   font-weight: 400;
   margin-right: 8px;
+}
+
+#id_demo_date {
+  z-index: 9999 !important;
 }
 
 @media only screen and (max-width: 768px) {

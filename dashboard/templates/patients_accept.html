@@ -1,0 +1,15 @@
+{% extends 'base_dashboard.html' %}
+
+{% block title %}Confirm Appointment{% endblock %}
+
+{% block dashboard_content %}
+    <a href="{% url 'patients' %}">&lt; Back to Bookings</a>
+    <hr/>
+    <h2>Confirm cancellation</h2>
+    <p>Are you sure you want to cancel your appointment for {{ post.app_date }} @ {{ post.app_time }}?</p>
+    <form method="post" action="{% url 'patients_accept' post.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Confirm Appointment</button>
+    </form>
+
+{% endblock %}

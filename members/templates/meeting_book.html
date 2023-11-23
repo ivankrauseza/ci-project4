@@ -1,0 +1,21 @@
+{% extends 'base_dashboard.html' %}
+
+{% block title %}Bookings{% endblock %}
+
+{% block dashboard_content %}
+
+<a href="{% url 'profile' %}">&lt; Back</a>
+<hr/>
+<h4>{{ record.title }}</h4>
+<p>Starts at: {{ record.start_time }}</p>
+<p>Duration: 2.5 hours</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+    <br/>
+</form>
+
+
+
+{% endblock %}

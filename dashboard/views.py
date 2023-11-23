@@ -1,79 +1,88 @@
 # from django.contrib.auth.forms import UserCreationForm
 from allauth.account.forms import SignupForm
 from allauth.account.models import EmailAddress
-from django.contrib.auth import get_user_model
 from django.shortcuts import render, redirect, get_object_or_404
-from django.core.management import call_command
 from django.contrib.auth.decorators import login_required
-from booking.models import Booking, Demonstration, Calendar, CalendarInstance
+from django.contrib import messages
+# Users
 from django.contrib.auth.models import User
+# Booking Modals
+from booking.models import Appointments
 # Disable User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from datetime import date, datetime
-from booking.forms import CalendarInstanceForm
+from datetime import date
+from .forms import AppointmentsForm
 
 
 # User = get_user_model()
 
 
+@login_required
 def dashboard(request):
     today = date.today()
     formatted_today = today.strftime("%Y-%m-%d")
     print(formatted_today)
-    booking_data = Booking.objects.filter(date__exact=today).count()
-    tour_data = Demonstration.objects.filter(demo_date__exact=today).count()
+    open_appointments = Appointments.objects.filter(confirmed=False).count()
     context = {
-        'booking_data_count': booking_data,
-        'tour_data_count': tour_data,
+        'open_appointments': open_appointments,
     }
     return render(request, 'dashboard.html', context)
 
 
 @login_required
-def tours(request):
-    tour_data = Demonstration.objects.all().order_by('demo_date')
-    return render(request, 'tours.html', {'tour_data': tour_data})
-
-
-@login_required
-def bookings(request):
-    cal_data = Calendar.objects.all()
-    today = datetime.now()
-    js_timestamp = int(today.timestamp() * 1000)
-    cal_instance = CalendarInstance.objects.filter(date__gte=js_timestamp)
-
+def patients(request):
+    print(request.user.id)
+    patients = Appointments.objects.all().filter(confirmed=False).order_by('app_date')
+    birds = Appointments.objects.all().filter(completed=False, doctor=request.user.id).order_by('app_date')
     context = {
-        'cal_data': cal_data,
-        'cal_instance': cal_instance,
+        'patients': patients,
+        'birds': birds
     }
-
-    return render(request, 'bookings.html', context)
+    return render(request, 'patients.html', context)
+# GP sets the owner field to themselves
 
 
 @login_required
-def bookings_update(request, pk):
-    record = CalendarInstance.objects.get(pk=pk)
-
+def patients_detail(request, post_id):
+    record = get_object_or_404(Appointments, id=post_id)
     if request.method == 'POST':
-        form = CalendarInstanceForm(request.POST, instance=record)
+        form = AppointmentsForm(request.POST, instance=record)
         if form.is_valid():
             form.save()
-            return redirect('bookings')
+            messages.success(request, "Data is saved!")
+            return redirect('patients')  # Redirect to a success page
     else:
-        form = CalendarInstanceForm(instance=record)
+        form = AppointmentsForm()
 
     context = {
         'record': record,
-        'form': form
+        'form': form,
     }
-    return render(request, 'update_record.html', context)
+
+    return render(request, 'patients_detail.html', context)
 
 
-@login_required
-def bookings_view(request, pk):
-    your_object = get_object_or_404(CalendarInstance, pk=pk)
-    return render(request, 'view_record.html', {'your_object': your_object})
+def patients_accept(request, post_id):
+    post = get_object_or_404(Appointments, pk=post_id)
+
+    if request.method == 'POST':
+        post.doctor = request.user.id
+        post.confirmed = True
+        post.save()
+        return redirect('patients')
+
+    return render(request, 'patients_accept.html', {'post': post})
+
+
+def patients_delete(request, post_id):
+    post = get_object_or_404(Appointments, pk=post_id)
+
+    if request.method == 'POST':
+        post.delete()
+        return redirect('patients')
+
+    return render(request, 'patients_delete.html', {'post': post})
 
 
 def members(request):

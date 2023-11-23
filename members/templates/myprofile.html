@@ -4,14 +4,26 @@
 
 {% block member_content %}
 
-    <h2>My Profile</h2>
-    <p>Welcome, {{ user.username }}</p>
-    <p>Email: {{ user.email }} ... <a href="{% url 'account_email' %}">change</a></p>
-    <p>Change password ... <a href="{% url 'account_change_password' %}">change</a></p>
-    <ul>
-        <li>{{ user.id }}</li>
-        <li>{{ user.username }}</li>
-        <li>{{ user.email }}</li>
-    </ul>
+    <div class="row">
+        <h3>My Profile</h3>
+        <hr/>
+        <div class="content">
+            <p>
+                {% if not user.first_name %}
+                    {{ user.username }}
+                {% else %}
+                    Hi, {{ user.first_name }} {{ user.last_name }}
+                {% endif %}
+            </p>
+
+            <p>Email: {{ user.email }} ... <a href="{% url 'account_email' %}">change</a></p>
+            <p>Change password ... <a href="{% url 'account_change_password' %}">change</a></p>
+            <ul>
+                <li>{{ user.id }}</li>
+                <li>{{ user.username }}</li>
+                <li>{{ user.email }}</li>
+            </ul>
+        </div>
+    </div>
 
 {% endblock %}

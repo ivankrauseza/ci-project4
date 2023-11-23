@@ -1,28 +1,16 @@
 from django.contrib import admin
-from .models import Booking, Calendar, CalendarInstance, Demonstration
+from .models import Appointments
 
 
-class CalendarAdmin(admin.ModelAdmin):
+class AppointmentsAdmin(admin.ModelAdmin):
     list_display = (
-        'date',
-        'name',
-        'booked'
+        'id',
+        'app_member',
+        'app_date',
+        'app_time',
     )
 
-    ordering = ('date',)
+    ordering = ('id', 'app_date', 'app_time',)
 
 
-class CalendarInstanceAdmin(admin.ModelAdmin):
-    list_display = (
-        'date',
-        'start_time',
-        'calendar_name',
-    )
-
-    ordering = ('date', 'start_time',)
-
-
-admin.site.register(Calendar, CalendarAdmin)
-admin.site.register(CalendarInstance, CalendarInstanceAdmin)
-admin.site.register(Booking)
-admin.site.register(Demonstration)
+admin.site.register(Appointments, AppointmentsAdmin)

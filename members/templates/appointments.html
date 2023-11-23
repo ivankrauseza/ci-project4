@@ -1,0 +1,124 @@
+{% extends 'base_members.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block member_content %}
+
+<h2>
+    My Appointments
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add New &#x2b;
+    </button>
+</h2>
+<p>
+    All digital appointments are hosted through <a href="https://zoom.us/download" target="_blank">Zoom</a>. You will receive an invite from your medical practitioner when you appointment is confirmed.
+</p>
+
+<hr/>
+
+<div class="content">
+    {% for appointment in appointments %}
+    <div class="row">
+        <div class="col-sm-6 text-start">
+            <a href="./{{ appointment.id }}">
+                <p>
+                    <strong>
+                        {{ appointment.app_type }}
+                    </strong>
+                    <br/>
+                        {{ appointment.app_date }} @{{ appointment.app_time }}
+                    <br/>
+                    <small>Confirmation Status: 
+                        {% if appointment.confirmed %}
+                            <span class="good">Confirmed</span> 
+                        {% else%}
+                            <span class="bad">Pending</span> 
+                        {% endif%}
+                    </small>
+                </p>
+            </a>
+        </div>
+        <div class="col-sm-6 text-end my-auto">
+            <a href="{% url 'appointments_delete' appointment.id %}" class="btn btn-danger">
+                <i class="fa-solid fa-trash-can"></i>
+            </a>
+        </div>
+    </div>
+    <hr/>
+    {% endfor %}
+</div>
+
+<h6>Previously completed appointments:</h6>
+<div class="content">
+    {% for complete in completed %}
+    <small>
+        <strong>
+            {{ complete.app_type }}
+        </strong>
+        <br/>
+            {{ complete.app_date }} @{{ complete.app_time }}
+    </small>
+    <hr/>
+    {% endfor %}
+</div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Book Appointment</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <p>
+                    Please choose the <strong>TYPE</strong> of service, 
+                    the <strong>DATE</strong> and the <strong>TIME</strong> 
+                    for your consultation:
+                </p>
+
+                <form method="post" action="{% url 'appointments' %}">
+                    {% csrf_token %}
+
+                    <input type="hidden" name="app_member" value="{{ request.user.id }}">
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="{{ form.message.id_for_label }}">
+                            TYPE
+                        </label>
+                        {{ form.app_type }}
+                        {{ form.app_type.errors }}
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="{{ form.message.id_for_label }}">
+                            DATE
+                        </label>
+                        {{ form.app_date }}
+                        {{ form.app_date.errors }}
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="{{ form.message.id_for_label }}">
+                            TIME
+                        </label>
+                        {{ form.app_time }}
+                        {{ form.app_time.errors }}
+                    </div>
+                    <button type="submit" class="btn btn-primary text-white mt-3 fPersian">Submit Booking</button>
+                    <hr/>
+                    <small>
+                        Please note that all appointments are subject to a 
+                        consultation fee of <strong>&euro;60</strong>. Payment 
+                        must be made in full before your consultation. Your medical 
+                        practitioner will record your session as proof of session.
+                    </small>
+
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+{% endblock %}

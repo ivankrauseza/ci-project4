@@ -1,0 +1,96 @@
+{% extends 'base_dashboard.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block dashboard_content %}
+
+    <h2>
+        Patient Appointments
+    </h2>
+
+    <hr/>
+
+    <h6>My next appointments:</h6>
+
+    <div class="content">
+        {% for bird in birds %}
+            <p>
+                <strong>
+                    {{ bird.app_type }}
+                </strong>
+                <br/>
+                    {{ bird.app_date }} @{{ bird.app_time }}
+            </p>
+        {% endfor %}
+        </div>
+        <hr/>
+        <h6>Open appointments:</h6>
+        <div class="content">
+        {% for patient in patients %}
+        <div class="row">
+            <div class="col-sm-6 text-start">
+                <a href="./{{ patient.id }}">
+                    <p>
+                        <strong>
+                            {{ patient.app_type }}
+                        </strong>
+                        <br/>
+                            {{ patient.app_date }} @{{ patient.app_time }}
+                        <br/>
+                        <small>Confirmation Status: 
+                            {% if patient.confirmed %}
+                                <span class="good">Confirmed</span> 
+                            {% else%}
+                                <span class="bad">Pending</span> 
+                            {% endif%}
+                        </small>
+                    </p>
+                </a>
+            </div>
+            <div class="col-sm-6">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ patient.id }}">
+                    View Booking
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal{{ patient.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Accept Booking</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                <strong>
+                                    {{ patient.app_type }}
+                                </strong>
+                                <br/>
+                                    {{ patient.app_date }} @{{ patient.app_time }}
+                                <br/>
+                                <small>Confirmation Status: 
+                                    {% if patient.confirmed %}
+                                        <span class="good">Confirmed</span> 
+                                    {% else%}
+                                        <span class="bad">Pending</span> 
+                                    {% endif%}
+                                </small>
+                            </p>
+                            <hr/>
+                            <form method="post" action="{% url 'patients_accept' patient.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary text-white mt-3 fPersian">Confirm Booking</button>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        {% endfor %}
+    </div>
+
+    <h6>Completed by me:</h6>
+
+{% endblock %}

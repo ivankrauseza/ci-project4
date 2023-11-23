@@ -37,7 +37,8 @@ img {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    text-transform: uppercase;
     button {
         float: right;
     }
@@ -55,7 +56,9 @@ header, footer, main, nav, section, aside, article {
     width: 100%;
 }
 
+
 #hdr {
+    border-top: 1px solid #eee;
     position: relative;
     z-index: 2;
     position: fixed;
@@ -177,15 +180,18 @@ main {
         }
         article {
             padding:1em 0;
-            h2 {
-                margin: 0.5em 0;
-            }
             header {
                 background-color: #fff;
                 border-radius: 8px;
                 margin: 0 0 2em 0;
                 padding: 8px;
                 font-size: 12px;
+            }
+            h2 {
+                margin-bottom: 1em;
+            }
+            p {
+                max-width: 768px;
             }
             ul.key {
                 float: left;
@@ -202,10 +208,16 @@ main {
             }
             .content {
                 border: 1px solid #eee;
+                border-bottom: 4px solid #eee;
                 border-radius: 8px;
                 background-color: #fff;
                 padding: 1em;
                 margin-bottom: 2em;
+                hr {
+                    border: none;
+                    border-bottom: 1px dashed #0088ff;
+                    opacity: 0.25;
+                }
             }
             .insight {
                 float: left;
@@ -296,6 +308,10 @@ box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
             margin-right: 8px;
         }
     }
+}
+
+#id_demo_date {
+    z-index: 9999!important;
 }
 
 

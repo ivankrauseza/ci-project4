@@ -1,0 +1,68 @@
+{% extends 'base_members.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block member_content %}
+    <div class="row">
+        <div class="col-sm-12 text-start">
+            <a href="{% url 'appointments' %}">&lt; Back to Bookings</a>
+            <hr/>
+        </div>
+        <div class="col-sm-6 text-start">
+            <h4>{{ record.app_type }}</h4>
+            <p>
+                {{ record.app_date }} @{{ record.app_time }}
+                <br/>
+                <small>Confirmation Status: 
+                    {% if appointment.confirmed %}
+                        <span class="good">Confirmed</span> 
+                    {% else%}
+                        <span class="bad">Pending</span> 
+                    {% endif%}
+                </small>
+            </p>
+        </div>
+        <div class="col-sm-6 text-end my-auto">
+            <a href="{% url 'appointments_delete' record.id %}" class="btn btn-danger">
+                Cancel booking?
+            </a>
+        </div>
+        <div class="col-sm-12 text-start">
+            <hr/>
+        </div>
+        <div class="col-sm-12 text-start">
+            <div class="content">
+                <h5>Checklist:</h5>
+                <p>Now that you have booked your consultation, here is what to expect.</p>
+                <ol>
+                    <li>
+                        <h6>Confirmation</h6>
+                        <p>
+                            Once a medical practitioner has been assigned, 
+                            you will receive an email confirmation with a 
+                            link to your online consultation. Your confirmation 
+                            status will also be updated on this website.
+                        </p>
+                    </li>
+                    <li>
+                        <h6>Zoom</h6>
+                        <p>All consultations are via Zoom, so please watch this 
+                            <a href="https://youtu.be/TL0DRymkJUE?si=x3BuEF5dxFDT4fzB" target="_blank">video</a> 
+                            if you are not familiar with the platform. Alternatively, click on the link below
+                            if you are ready to install Zoom on your device.
+                        </p>
+                        <p><a href="https://zoom.us/download" class="btn btn-primary" target="_blank">Install Zoom</a></p>
+                    </li>
+                    <li>
+                        <h6>Join the call</h6>
+                        <p>When the time comes, simply click on the Zoom link sent via email to join the call.</p>
+                    </li>
+                </ol>
+                <hr/>
+                <h6>Problems</h6>
+                <p>Please contact us if you have any problems before/during/after the call.</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

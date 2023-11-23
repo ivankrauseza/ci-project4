@@ -21,24 +21,21 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'bookings' %}">
+                                        <a href="{% url 'patients' %}">
                                             <i class="fa-solid fa-clipboard-list"></i>
-                                            <small>schedule</small>
+                                            <small>appointments</small>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="{% url 'tours' %}">
-                                            <i class="fa-solid fa-magnifying-glass-location"></i>
-                                            <small>tours</small>
-                                        </a>
-                                    </li>
+                                </ul>
+                                {% if user.is_superuser %}
+                                <h6>Superuser</h6>
+                                <ul>
                                     <li>
                                         <a href="{% url 'members' %}">
                                             <i class="fa-solid fa-people-group"></i>
                                             <small>members</small>
                                         </a>
                                     </li>
-                                    {% if user.is_superuser %}
                                     <li>
                                         <a href="{% url 'staff' %}">
                                             <i class="fa-solid fa-id-badge"></i>

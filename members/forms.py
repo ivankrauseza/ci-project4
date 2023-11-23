@@ -1,22 +1,22 @@
 from django import forms
-from booking.models import Booking
+from booking.models import Appointments
 
 
-class BookingForm(forms.ModelForm):
+class AppointmentsForm(forms.ModelForm):
     class Meta:
-        model = Booking
-        fields = ['member', 'date', 'meal']
+        model = Appointments
+        fields = ['app_member', 'app_type', 'app_date', 'app_time']
 
     def __init__(self, *args, **kwargs):
-        super(BookingForm, self).__init__(*args, **kwargs)
-        self.fields['member'].widget.attrs.update({
+        super(AppointmentsForm, self).__init__(*args, **kwargs)
+        self.fields['app_type'].widget.attrs.update({
             'class': 'form-control',
-            'placeholder': 'Full Name',
             }),
-        self.fields['date'].widget.attrs.update({
+        self.fields['app_date'].widget.attrs.update({
             'class': 'form-control',
+            'id': 'id_demo_date',
             'placeholder': 'Date',
             }),
-        self.fields['meal'].widget.attrs.update({
+        self.fields['app_time'].widget.attrs.update({
             'class': 'form-control'
             }),

@@ -54,14 +54,6 @@
             &copy; 2023 Lavoro Workspaces
         </small>
         
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        
     {% if user.is_authenticated  %}   
     {% if user.is_staff %}
         <small style="float: right; width: auto;">You are logged in as: <strong>{{ user.username }}</strong></small>
