@@ -6,7 +6,7 @@
     <h2>
         Members
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            New
+            Manually Add
         </button>
     </h2>
     <div class="content">
@@ -51,7 +51,7 @@
                 <form method="post" action="{% url 'staff' %}">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button type="submit" class="btn btn-primary">Create Admin User</button>
+                    <button type="submit" class="btn btn-primary">Create Member</button>
                 </form>
             </div>
         </div>
