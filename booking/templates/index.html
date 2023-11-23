@@ -9,33 +9,25 @@
     <div class="hero_hme">
         <div class="inner">
             <div class="container-lg">
-                <div class="row gx-5">
+                <div class="row">
                     <!--GUEST VIEW-->
-                    <div class="col-xs-12 col-sm-4 p-5 my-auto text-center">
-                        <a href="{% url 'workspace' %}">
-                            <img src="{% static '/images/workspace.png' %}"/>
-                            <h3>Shared Office Space</h3>
-                            <h4>A comfy space and great wifi!</h4>
-                            <p>Walk-ins welcome</p>
-                        </a>
+                    <div class="col-xs-12 col-sm-6 my-auto text-center">
+                            <img src="{% static '/images/doctor.png' %}"/>
                     </div>
                     <!--GUEST VIEW-->
-                    <div class="col-xs-12 col-sm-4 p-5 my-auto text-center">
-                        <a href="{% url 'meeting' %}">
-                            <img src="{% static '/images/meeting_room.png' %}"/>
-                            <h3>Meeting Rooms</h3>
-                            <h4>Modern and stylish!</h4>
-                            <p>Members only</p>
-                        </a>
-                    </div>
-                    <!--GUEST VIEW-->
-                    <div class="col-xs-12 col-sm-4 p-5 my-auto text-center">
-                        <a href="{% url 'cafe' %}">
-                            <img src="{% static '/images/cafe.png' %}"/>
-                            <h3>The Daily Grind Cafe</h3>
-                            <h4>Modern and stylish!</h4>
-                            <p>All welcome</p>
-                        </a>
+                    <div class="col-xs-12 col-sm-6 my-auto">
+                            <h1>Welcome to <strong>Lavoro</strong>!</h3>
+                            <h4>
+                                Our dedicated medical professionals are here to help you 
+                                with physical and mental health services.
+                            </h4>
+                            <hr/>
+                            <a href="{% url 'account_login' %}" class="btn btn-primary">
+                                Members Login
+                            </a>
+                            <a href="{% url 'account_login' %}" class="btn">
+                                Sign Up
+                            </a>
                     </div>
                 </div>
             </div>
