@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
-from booking.models import Appointments
+from appointment.models import Appointments
 from django.contrib import messages
 from .forms import AppointmentsForm
 
