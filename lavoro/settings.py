@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
     'cloudinary',
 ]
 
@@ -103,20 +102,6 @@ ACCOUNT_UNIQUE_EMAIL = True
 
 CRISPY_TEMPLATE_PACK = 'uni_form'
 
-# Provider specific settings
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        # For each OAuth based provider, either add a ``SocialApp``
-        # (``socialaccount`` app) containing the required client
-        # credentials, or list them here:
-        'EMAIL_AUTHENTICATION': True,
-        'APP': {
-            'client_id': '829445457984-95ub84oa6fjfd5m7bj87bnm719p5e7i1.apps.googleusercontent.com',
-            'secret': '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',
-            'key': ''
-        }
-    }
-}
 
 WSGI_APPLICATION = 'lavoro.wsgi.application'
 
