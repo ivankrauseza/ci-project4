@@ -86,8 +86,7 @@ def patients_delete(request, post_id):
 
 
 def members(request):
-    if request.method == 'GET':
-        users_members = User.objects.filter(is_staff=False)
+    users_members = User.objects.filter(is_staff=False)
 
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -116,10 +115,8 @@ def members(request):
 
 
 def staff(request):
-
-    if request.method == 'GET':
-        staff_users = User.objects.order_by('email').filter(is_staff=True, is_superuser=False)
-        super_users = User.objects.order_by('email').filter(is_staff=True, is_superuser=True)
+    staff_users = User.objects.order_by('email').filter(is_staff=True).filter(is_superuser=False)
+    super_users = User.objects.order_by('email').filter(is_superuser=True)
 
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -140,9 +137,9 @@ def staff(request):
         form = SignupForm()
 
     context = {
-        'form': form,
         'staff_users': staff_users,
         'super_users': super_users,
+        'form': form,
     }
 
     return render(request, 'staff.html', context)

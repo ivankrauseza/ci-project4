@@ -48,7 +48,7 @@
             </div>
             <div class="modal-body">
                 <p>Only add a new member if the individual has requested it.</p>
-                <form method="post" action="{% url 'staff' %}">
+                <form method="post" action="{% url 'members' %}">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <button type="submit" class="btn btn-primary">Create Member</button>
