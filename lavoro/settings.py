@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -116,9 +117,10 @@ SOCIALACCOUNT_PROVIDERS = {
         # For each OAuth based provider, either add a ``SocialApp``
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
+        'EMAIL_AUTHENTICATION': True,
         'APP': {
-            'client_id': '123',
-            'secret': '456',
+            'client_id': '829445457984-95ub84oa6fjfd5m7bj87bnm719p5e7i1.apps.googleusercontent.com',
+            'secret': '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',
             'key': ''
         }
     }
