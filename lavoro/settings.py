@@ -1,15 +1,12 @@
 import os
 from pathlib import Path
 import dj_database_url
-
-
 if os.path.isfile('env.py'):
     import env
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -18,9 +15,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'https://ivankrause-ci-project4-acbd33a75ce8.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'ivankrause-ci-project4-acbd33a75ce8.herokuapp.com']
 
 
 # Application definition
@@ -40,6 +37,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -64,7 +62,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'templates', 'accounts')
+            os.path.join(BASE_DIR, 'accounts')
             ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -88,7 +86,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 ACCOUNT_ADAPTER = "allauth.account.adapter.DefaultAccountAdapter"
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
 # LOGIN_REDIRECT_URL = "/"
 LOGIN_REDIRECT_URL = 'clr'
@@ -165,10 +163,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, images)
 STATIC_URL = '/static/'
 
-# Additional locations of static files
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+# STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+    'API_KEY': os.environ.get('API_KEY'),
+    'API_SECRET': os.environ.get('API_SECRET'),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
