@@ -16,7 +16,7 @@
     {% endif %}
     <form method="post" action="{% url 'dashboard_appointment_accept' post.id %}">
         {% csrf_token %}
-        <input type="hidden" name="doctor" value="{{ post.doctor }}"/>
+        <input type="hidden" name="doctor" value="{{ post.doctor }}">
         <button type="submit" class="btn btn-danger">Confirm Appointment</button>
     </form>
 

@@ -110,12 +110,19 @@ Wireframes produced in Adobe Illustrator.
 - Manual Testing (Authentication, Booking Form)
 ### Validator Testing 
 #### W3C HTML
+Most of the errors were related to <img> <input> and <hr> tags as the trailing slash needed to be removed. There are also some issues related to the dynamic output of the AllAuth signup template which are not clear so I could not resolve.
+
 ![html.png](static/readme/html.png)
+
 #### W3C CSS
 ![css.png](static/readme/css.png)
+
 #### PEP8
 ![pep8.png](static/readme/pep8.png)
+
 #### Lighthouse
+Overall, the Lighthouse test performed reasonably ok, across all pages.
+
 ![lighthouse.png](static/readme/lighthouse.png)
 
 
