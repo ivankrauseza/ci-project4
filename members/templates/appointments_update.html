@@ -1,0 +1,39 @@
+{% extends 'base_members.html' %}
+
+{% block title %}Update Appointment{% endblock %}
+
+{% block member_content %}
+    <a href="{% url 'appointments' %}">&#x276E; Appointments</a>
+    <hr>
+    <h2>Update Appointment</h2>
+    <form method="post" action="{% url 'appointments_update' record.id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" name="app_member" value="{{ request.user.id }}">
+        {% for error in form.errors %}
+            <p style="color: red;">{{ error }}</p>
+        {% endfor %}
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="{{ form.message.id_for_label }}">
+                TYPE
+            </label>
+            {{ form.app_type }}
+        </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="{{ form.message.id_for_label }}">
+                DATE
+            </label>
+            {{ form.app_date }}
+        </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="{{ form.message.id_for_label }}">
+                TIME
+            </label>
+            {{ form.app_time }}
+        </div>
+        <button type="submit" class="btn btn-primary text-white mt-3">Save Changes</button>
+
+    </form>
+
+{% endblock %}

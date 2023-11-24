@@ -11,11 +11,7 @@ from appointment.models import Appointments
 # Disable User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from datetime import datetime
 from .forms import AppointmentsForm
-
-
-# User = get_user_model()
 
 
 @login_required
@@ -69,21 +65,20 @@ def appointment_accept(request, post_id):
     post = get_object_or_404(Appointments, pk=post_id)
 
     if request.method == 'POST':
-
         # Access the field value you're interested in
         field_value = post.doctor
 
         # Check if the field value is 0
         if field_value == 0:
             # Do something if the field value is 0
-            print('Field value is 0')
             post.doctor = request.user.id
             post.confirmed = True
             post.save()
+            messages.success(request, "You have confirmed the appointment")
             return redirect('dashboard')
         else:
             # Do something else if the field value is not 0
-            messages.info(request, 'Sorry, it looks like another Doctor has accepted this appointment before you.')
+            messages.error(request, 'Sorry, it looks like another Doctor has accepted this appointment before you.')
         
     return render(request, 'db_appointment_error.html', {'post': post})
 
@@ -146,7 +141,7 @@ def doctors(request):
             email_address = EmailAddress.objects.get(email=user.email)
             email_address.verified = True
             email_address.save()
-
+            messages.success(request, "Doctor saved!")
             return redirect('doctors')  # Redirect to a success page
     else:
         form = SignupForm()

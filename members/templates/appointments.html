@@ -48,20 +48,6 @@
     {% endfor %}
 </div>
 
-<h6>Previously completed appointments:</h6>
-<div class="content">
-    {% for complete in completed %}
-    <small>
-        <strong>
-            {{ complete.app_type }}
-        </strong>
-        <br/>
-            {{ complete.app_date }} @{{ complete.app_time }}
-    </small>
-    <hr>
-    {% endfor %}
-</div>
-
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">

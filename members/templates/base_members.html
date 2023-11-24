@@ -3,43 +3,40 @@
 {% load account %}
 
 {% block content %}
-
     {% if user.is_authenticated  %}
-        
         {% if not user.is_staff %}
-        
-        <div class="container-fluid p-4">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-3">
-            <aside>
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="{% url 'myprofile' %}">
-                                <i class="fa-solid fa-address-card"></i>
-                                <small>profile</small>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{% url 'appointments' %}">
-                                <i class="fa-brands fa-screenpal"></i>
-                                <small>appointments</small>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </aside>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-8">
-            <article class="container">
-                <div>
-                    {% block member_content %}{% endblock %}
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <aside>
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'member' %}">
+                                            <i class="fa-solid fa-address-card"></i>
+                                            <small>profile</small>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'appointments' %}">
+                                            <i class="fa-brands fa-screenpal"></i>
+                                            <small>appointments</small>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </aside>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-8">
+                        <article>
+                            <div>
+                                {% block member_content %}{% endblock %}
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-1"></div>
                 </div>
-            </article>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-1"></div>
-    </div>
-</div>
+            </div>
         {% endif %}
         
         {% if user.is_staff %}

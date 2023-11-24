@@ -1,13 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from appointment.models import Appointments
 from django.contrib import messages
-from .forms import AppointmentsForm
+from .forms import AppointmentForm
 
 
 def profile(request):
-    return render(request, 'myprofile.html')
+    return render(request, 'member.html')
 
 
 @login_required
@@ -22,13 +21,13 @@ def appointments(request):
 
     if request.method == 'POST':
         # user_id = request.POST.get('user_id')
-        form = AppointmentsForm(request.POST)
+        form = AppointmentForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Data is saved!")
+            messages.success(request, "Appointment saved!")
             return redirect('appointments')  # Redirect to a success page
     else:
-        form = AppointmentsForm()
+        form = AppointmentForm()
 
     context = {
         'appointments': appointments,
@@ -43,13 +42,15 @@ def appointments(request):
 def appointments_detail(request, post_id):
     record = get_object_or_404(Appointments, id=post_id)
     if request.method == 'POST':
-        form = AppointmentsForm(request.POST, instance=record)
+        form = AppointmentForm(request.POST, instance=record)
         if form.is_valid():
             form.save()
+            # Send message toast:
             messages.success(request, "Data is saved!")
-            return redirect('appointments')  # Redirect to a success page
+            # Redirect to appointments:
+            return redirect('appointments')
     else:
-        form = AppointmentsForm()
+        form = AppointmentForm()
 
     context = {
         'record': record,
@@ -57,6 +58,34 @@ def appointments_detail(request, post_id):
     }
 
     return render(request, 'appointments_detail.html', context)
+
+
+@login_required
+def appointments_update(request, post_id):
+    record = get_object_or_404(Appointments, pk=post_id)
+
+    if request.method == 'POST':
+        form = AppointmentForm(request.POST, instance=record)
+        if form.is_valid():
+            form.save()
+            # Send message toast:
+            messages.success(request, "Update saved!")
+            # Redirect to appointments:
+            return redirect('appointments')
+        else:
+            # Send message toast:
+            print("Form errors:", form.errors)
+            messages.error(request, "Something went wrong")
+            form = AppointmentForm(instance=record)
+    else:
+        form = AppointmentForm(instance=record)
+
+    context = {
+        'record': record,
+        'form': form,
+    }
+
+    return render(request, 'appointments_update.html', context)
 
 
 def appointments_delete(request, post_id):
@@ -67,41 +96,3 @@ def appointments_delete(request, post_id):
         return redirect('appointments')
 
     return render(request, 'appointments_delete.html', {'post': post})
-
-
-@login_required
-def bookings(request):
-    booking_data = Booking.objects.filter(member=request.user)
-
-    if request.method == 'POST':
-        form = BookingForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Data is saved!")
-            return redirect('bookings')  # Redirect to a success page
-    else:
-        form = BookingForm()
-
-    context = {
-        'form': form,
-        'booking_data': booking_data
-    }
-
-    return render(request, 'mybookings.html', context)
-
-
-# BOOKING A MEETING
-def meeting_book(request, pk):
-    record = CalendarInstance.objects.get(pk=pk)
-    if request.method == 'POST':
-        form = MeetingBookForm(request.POST, instance=record)
-        if form.is_valid():
-            form.save()
-            return redirect('profile')
-    else:
-        form = MeetingBookForm(instance=record)
-    context = {
-        'record': record,
-        'form': form
-    }
-    return render(request, 'meeting_book.html', context)

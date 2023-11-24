@@ -5,7 +5,7 @@
 {% block member_content %}
     <div class="row">
         <div class="col-sm-12 text-start">
-            <a href="{% url 'appointments' %}">&#x276E; Back to Bookings</a>
+            <a href="{% url 'appointments' %}">&#x276E; Appointments</a>
             <hr>
         </div>
         <div class="col-sm-6 text-start">
@@ -14,7 +14,7 @@
                 {{ record.app_date }} @{{ record.app_time }}
                 <br/>
                 <small>Confirmation Status: 
-                    {% if appointment.confirmed %}
+                    {% if record.confirmed %}
                         <span class="good">Confirmed</span> 
                     {% else%}
                         <span class="bad">Pending</span> 
@@ -23,8 +23,13 @@
             </p>
         </div>
         <div class="col-sm-6 text-end my-auto">
+            {% if not record.confirmed %}
+                <a href="{% url 'appointments_update' record.id %}" class="btn btn-primary">
+                    Edit
+                </a>
+            {% endif %}
             <a href="{% url 'appointments_delete' record.id %}" class="btn btn-danger">
-                Cancel booking?
+                Cancel
             </a>
         </div>
         <div class="col-sm-12 text-start">

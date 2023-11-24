@@ -32,6 +32,9 @@ img {
 .bad {
     color: red;
 }
+.warning {
+    color: orange;
+}
 .none {
     color: grey;
 }
@@ -50,7 +53,6 @@ h6 {
 }
 
 header, footer, main, nav, section, aside, article {
-    display: block;
     float: left;
     width: 100%;
 }
@@ -106,6 +108,7 @@ box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
 }
 
 main {
+    float: left;
     padding:0em;
     a {
         color: #0088ff;
@@ -114,6 +117,7 @@ main {
         }
     }
     section {
+        float: left;
         background-color: #edf8fc;
         position: relative;
         padding: 64px 0 0 0;
@@ -133,8 +137,7 @@ main {
             }
         }
         aside {
-            float: left;
-            width: 100%;
+            padding: 16px;
             nav {
                 float: left;
                 width: 100%;
@@ -176,7 +179,7 @@ main {
             }
         }
         article {
-            padding:1em 0;
+            padding: 16px;
             header {
                 background-color: #fff;
                 border-radius: 8px;
@@ -309,6 +312,24 @@ box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
 
 #id_demo_date {
     z-index: 9999!important;
+}
+
+
+/* ------------------------------- bootstrap toasts */
+
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
 }
 
 

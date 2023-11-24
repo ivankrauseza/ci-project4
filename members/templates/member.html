@@ -10,7 +10,7 @@
         <div class="content">
             <p>
                 {% if not user.first_name %}
-                    {{ user.username }}
+                    Hi, {{ user.username }}
                 {% else %}
                     Hi, {{ user.first_name }} {{ user.last_name }}
                 {% endif %}
@@ -18,11 +18,6 @@
 
             <p>Email: {{ user.email }} ... <a href="{% url 'account_email' %}">change</a></p>
             <p>Change password ... <a href="{% url 'account_change_password' %}">change</a></p>
-            <ul>
-                <li>{{ user.id }}</li>
-                <li>{{ user.username }}</li>
-                <li>{{ user.email }}</li>
-            </ul>
         </div>
     </div>
 

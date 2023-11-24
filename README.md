@@ -28,9 +28,18 @@ The main aim was to be as ruthlessly simple as possible. The homepage tells you 
 ### Features
 - Guest creates a free account to become a Member
 - Members create appointments for a specific day and preset time (11am, 2pm, 7pm)
-- Doctors accept the appointment and send a video call link via email
-- Doctor confirms the completion of the appointment (any prescriptions are sent directly to a pharmacy)
-- Member is invoiced after the completion of the session
+- Doctors accept the appointment
+- Members can see that their appointment has been accepted
+- Doctor manually send the Member a video call link via email
+- Offline: Doctor confirms the completion of the appointment (any prescriptions are sent directly to a pharmacy)
+- Offline: Member is manually invoiced after the completion of the session via email
+
+#### Future Features
+- A Doctor would be able to click on an appointment that they have accepted, view more details about the Member 
+- A Doctor would be able to send the Member the video call link from within the App
+- A Doctor would be able to 'Complete' the appointment which will invoice the Member
+- A Member will see all invoicing
+- A Member will be able to pay through the App
 
 ### Database Schema
 We are using the default User table and our custom Appointment table. The Appointment table links two objects to the User table (member & doctor). However the doctor object is merely a reference to the ID of the User who accepts the appointment.
@@ -87,6 +96,7 @@ Wireframes produced in Adobe Illustrator.
 ### Authentication
 - pip install django-allauth ([see documentation](https://docs.allauth.org/en/latest/installation/quickstart.html))
 - Copy default AllAuth templates to templates/account (make sure to extend base.html)
+- Implemented 'BOOTSTRAP TOASTS' to notify the user during login and logout (bottom left and auto hide)
 
 ### Static files 
 #### Development
@@ -108,7 +118,11 @@ Wireframes produced in Adobe Illustrator.
 - Deploy Manually
 
 ## Testing
-- Manual Testing (Authentication, Booking Form)
+### Manual Testing 
+Manual testing was performed to validate that the Authentication and the Appointment booking system function correctly. Testing was also done on the interaction between the Member creating the appointment and the Doctor accepting the appointment from their views. A member CAN create, read, update and delete an appointment and a Doctor CAN accept an appointment which UPDATES the 'confirmed' field from False to True.  
+
+Bootstrap Toast messages were also implemented to alert the User as to the status of the Form submission.
+
 ### Validator Testing 
 #### W3C HTML
 Most of the errors were related to <img> <input> and <hr> tags as the trailing slash needed to be removed. There are also some issues related to the dynamic output of the AllAuth signup template which are not clear so I could not resolve.
@@ -119,7 +133,7 @@ Most of the errors were related to <img> <input> and <hr> tags as the trailing s
 ![css.png](static/readme/css.png)
 
 #### PEP8
-![pep8.png](static/readme/pep8.png)
+I have tested my code using https://www.pythonchecker.com/ and there are some issues where the errors refer to spacing around operators. Example: ('/') where it has recommended that I put a space around the operator like (' / ') which obviously breaks the path. I also received errors where the indentation should be 4 spaces but VS Code is tabbing the indentations but the code works fine according to the VSCode linter.
 
 #### Lighthouse
 Overall, the Lighthouse test performed reasonably ok, across all pages.
@@ -128,8 +142,10 @@ Overall, the Lighthouse test performed reasonably ok, across all pages.
 
 
 ## Toolbox
-- Members
-- Doctor Accounts
+### Test Users
+- Superuser: ivankrause / N01dea123abc
+- Doctor doctor2 / gOj11K02tsA
+- Member member1 / N01dea123abc
 
 ## Bugs
 - FIXED: CSS: background images not showing (path to static file needed to change)
@@ -143,7 +159,8 @@ Overall, the Lighthouse test performed reasonably ok, across all pages.
 - [MDN - Local Library](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Tutorial_local_library_website)
 
 ### Look & Feel Artwork
-- [Logo Icon - Freepik](https://www.freepik.com/free-vector/lion-fire-gradient-mascot-illustration-logo-design_54089107.htm#query=flame%20head&position=18&from_view=search&track=ais&uuid=17e479dc-1bd0-4830-8e21-a8fb72937208)
+- [Flame Lion Icon](https://www.freepik.com/free-vector/lion-fire-gradient-mascot-illustration-logo-design_54089107.htm)
+- [Homepage Illustration](https://www.freepik.com/free-vector/doctor-using-online-app-help-patients_7881487.htm)
 - Favicon created with: [https://favicon.io/](https://favicon.io/)
 - FALSE: https://timepicker.co/
 - Google Fonts (Roboto)

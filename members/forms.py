@@ -2,13 +2,13 @@ from django import forms
 from appointment.models import Appointments
 
 
-class AppointmentsForm(forms.ModelForm):
+class AppointmentForm(forms.ModelForm):
     class Meta:
         model = Appointments
         fields = ['app_member', 'app_type', 'app_date', 'app_time']
 
     def __init__(self, *args, **kwargs):
-        super(AppointmentsForm, self).__init__(*args, **kwargs)
+        super(AppointmentForm, self).__init__(*args, **kwargs)
         self.fields['app_type'].widget.attrs.update({
             'class': 'form-control',
             }),

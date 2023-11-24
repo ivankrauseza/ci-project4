@@ -33,6 +33,10 @@ img {
   color: red;
 }
 
+.warning {
+  color: orange;
+}
+
 .none {
   color: grey;
 }
@@ -52,7 +56,6 @@ h6 {
 }
 
 header, footer, main, nav, section, aside, article {
-  display: block;
   float: left;
   width: 100%;
 }
@@ -105,6 +108,7 @@ header, footer, main, nav, section, aside, article {
 }
 
 main {
+  float: left;
   padding: 0em;
 }
 main a {
@@ -114,6 +118,7 @@ main a:hover {
   color: #013D5E;
 }
 main section {
+  float: left;
   background-color: #edf8fc;
   position: relative;
   padding: 64px 0 0 0;
@@ -134,8 +139,7 @@ main section .hero_hme .inner {
   height: 100%;
 }
 main section aside {
-  float: left;
-  width: 100%;
+  padding: 16px;
 }
 main section aside nav {
   float: left;
@@ -177,7 +181,7 @@ main section aside nav ul li a small {
   text-transform: uppercase;
 }
 main section article {
-  padding: 1em 0;
+  padding: 16px;
 }
 main section article header {
   background-color: #fff;
@@ -301,6 +305,22 @@ ul.calendarInstance li {
 
 #id_demo_date {
   z-index: 9999 !important;
+}
+
+/* ------------------------------- bootstrap toasts */
+.message-container {
+  position: fixed;
+  top: 72px;
+  right: 15px;
+  z-index: 99999999999;
+}
+
+.custom-toast {
+  overflow: visible;
+}
+
+.toast-capper {
+  height: 2px;
 }
 
 @media only screen and (max-width: 768px) {
