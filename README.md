@@ -22,8 +22,7 @@ See [requirements.txt](https://github.com/ivankrauseza/ci-project4/blob/main/req
 - Markdown (ReadMe)
 
 ## User Experience
-The main aim was to be as ruthlessly simple as possible. The homepage tells you in brief about what Lavoro is, and that you need to login as a member to use the platform. A clean, easy on the eye and uncluttered display to keep the user calm.  
-It was determined that we would need 3 specific user types of Non-Staff (Member), Staff (Doctors), and Superuser (Admin).
+The main aim was to be as ruthlessly simple as possible. The homepage tells you in brief about what Lavoro is, and that you need to login as a member to use the platform. A clean, easy on the eye and uncluttered display to keep the user calm. It was determined that we would need 3 specific user types of Non-Staff (Member), Staff (Doctors), and Superuser (Admin).
 
 ### Features
 - Guest creates a free account to become a Member
@@ -33,6 +32,8 @@ It was determined that we would need 3 specific user types of Non-Staff (Member)
 - Member is invoiced after the completion of the session
 
 ### Database Schema
+We are using the default User table and our custom Appointment table. The Appointment table links two objects to the User table (member & doctor). However the doctor object is merely a reference to the ID of the User who accepts the appointment.
+
 ![schema.png](static/readme/schema.png)
 
 ### User Stories
