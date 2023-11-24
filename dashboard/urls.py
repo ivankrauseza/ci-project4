@@ -26,7 +26,7 @@ urlpatterns = [
         name='dashboard_appointment_accept'
     ),
     path('members/', views.members, name='members'),
-    path('staff/', views.staff, name='staff'),
+    path('doctors/', views.doctors, name='doctors'),
     path('disable_user/<int:user_id>/', views.disable_user, name='disable_user'),
     path('toggle_superuser/<int:user_id>/', views.toggle_superuser, name='toggle_superuser'),
 ]

@@ -1,58 +1,122 @@
-# ci-project4 - Lavoro Booking System
-Lavaro ('Work' in Italian) is a company that provides shared office space, but also sells consumer pods to the general public for remote working. Customers can book a workspace, Staff members can manage bookings, Superusers can manage everything.
+# Lavoro Digital Health
+As a person that struggles with social anxiety and mental health issues, I feel uncomfortable around people but I still need to interact with medical professionals from time to time because of my health issues. I really liked the idea of an online consultation in the privacy of your own home, but in my experience, the current platforms are still too complicated. I hope one day to simplify this process.
 
-## Features
-- Guest: Book a demonstration
-- Customer: Sign up to become a member
-- Admin: Manage Platform
+![responsive.png](static/readme/responsive.png)
 
+## Contents
+- [Technology Stack](#technology-stack)
+- [User Experience](#user-experience)
+- [Setup and Deployment](#setup-and-deployment)
+- [Testing](#testing)
+- [Bugs](#bugs)
+- [Toolbox](#toolbox)
 
-## Initial Setup
-- django-admin startproject lavoro
-- python manage.py startapp booking
-- touch .env
-- touch .gitignore (add env to gitignore)
+## Technology Stack
+See [requirements.txt](https://github.com/ivankrauseza/ci-project4/blob/main/requirements.txt) for an overview of the development environment.  
+- Python (Django)
+- HTML & CSS (Bootstrap @ 5.3.2)
+- JavaScript (jQuery @3.7.1 and jQueryUI @ 1.13.2)
+- Database (Postgres - ElephantSQL)
+- Icons FontAwesome @latest
+- Media (Cloudinary)
+- Markdown (ReadMe)
 
-## Admin
-- python manage.py makemigrations / python manage.py makemigrations --dry-run
+## User Experience
+The main aim was to be as ruthlessly simple as possible. The homepage tells you in brief about what Lavoro is, and that you need to login as a member to use the platform. A clean, easy on the eye and uncluttered display to keep the user calm.  
+It was determined that we would need 3 specific user types of Non-Staff (Member), Staff (Doctors), and Superuser (Admin).
+
+### Features
+- Guest creates a free account to become a Member
+- Members create appointments for a specific day and preset time (11am, 2pm, 7pm)
+- Doctors accept the appointment and send a video call link via email
+- Doctor confirms the completion of the appointment (any prescriptions are sent directly to a pharmacy)
+- Member is invoiced after the completion of the session
+
+### Database Schema
+![schema.png](static/readme/schema.png)
+
+### User Stories
+![stories.png](static/readme/stories.png)
+
+### Wireframes
+![wireframe.png](static/readme/wireframe.png)
+
+### Mockup
+![mockup.png](static/readme/mockup.png)
+
+## Setup and Deployment
+- Live Deployment: https://ivankrause-ci-project4-acbd33a75ce8.herokuapp.com
+- GitHub Repository: https://github.com/ivankrauseza/ci-project4
+
+### Setup Django Project
+- django-admin startproject lavoro .
+- python manage.py startapp appointment
+- python manage.py startapp member
+- python manage.py startapp dashboard
+- touch env.py
+- touch .gitignore (add env.py to .gitignore)
+
+### Setup Database
+- SQLite: Initial testing
+- ElephantSQL: Primary Database
+
+### Setup Admin Backend
+- python manage.py makemigrations
 - python manage.py migrate
-- python manage.py createsuperuser
-- python manage.py runserver (test admin)
+- python manage.py createsuperuser (u: ****** / e: ****** / p: ******)
+- python manage.py runserver
+- visit http://localhost:8000/admin to test the backend
 
-## Authentication
-- pip install django-allauth (add to installed apps)
-- pip install django-crispy-forms (add to installed apps)
-- configure settings.py and urls.py as per allauth documentation
+### Settings.py
 - settings.py > import os
 - settings.py > ALLOWED_HOSTS = ['localhost']
 - settings.py > SITE_ID = 1
 - settings.py > EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-- settings.py > CRISPY_TEMPLATE_PACK = 'uni_form'
-- ADMIN > /admin/account/emailaddress/ (verify admin email address)
-
-## Form Submissions
 - settings.py > MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
-## Templates
-
-### Default Templates
-- base.html
-- index.html (temporary for testing)
-
-### AllAuth Templates
-- Copy default AllAuth templates to templates/account (extend base.html)
+### Templates
 - settings.py > TEMPLATES > 'DIRS': [os.path.join(BASE_DIR, 'templates')],
+- create 'templates/base.html'
 
-## Libraries
-- Bootstrap (5.3.2)
-- jQuery (3.7.1)
-- FontAwesome (4)
+### Authentication
+- pip install django-allauth ([see documentation](https://docs.allauth.org/en/latest/installation/quickstart.html))
+- Copy default AllAuth templates to templates/account (make sure to extend base.html)
 
-## Static files
-- css
-- js
-- images
-- favicon
+### Static files 
+#### Development
+- settings.py > STATIC_URL = '/static/'
+- settings.py > STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+- settings.py > STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+#### Production
+- Cloudinary (See settings.py for config)
+
+### Deployment to Heroku
+- Create Procfile (web: gunicorn lavoro.wsgi)
+- Freeze requirements (pip freeze > requirements.txt)
+- Create New Project
+- Region: Europe 
+- Setup Config Vars
+- Deployment Method: GitHub > 'ci-project4'
+- Choose a branch to deploy 'main'
+- Deploy Manually
+
+## Testing
+- Manual Testing (Authentication, Booking Form)
+### Validator Testing 
+#### W3C HTML
+![html.png](static/readme/html.png)
+#### W3C CSS
+![css.png](static/readme/css.png)
+#### PEP8
+![pep8.png](static/readme/pep8.png)
+#### Lighthouse
+![lighthouse.png](static/readme/lighthouse.png)
+
+
+## Toolbox
+- Members
+- Doctor Accounts
 
 ## Bugs
 - FIXED: CSS: background images not showing (path to static file needed to change)
@@ -60,11 +124,11 @@ Lavaro ('Work' in Italian) is a company that provides shared office space, but a
 - FONTAWESOME: icons flashing on reload
 
 ## Resources
-- Favicon (https://favicon.io/)
-- https://jqueryui.com/datepicker/
+- [Logo Icon - Freepik](https://www.freepik.com/free-vector/lion-fire-gradient-mascot-illustration-logo-design_54089107.htm#query=flame%20head&position=18&from_view=search&track=ais&uuid=17e479dc-1bd0-4830-8e21-a8fb72937208)
+- Favicon created with: [https://favicon.io/](https://favicon.io/)
 - FALSE: https://timepicker.co/
 - Google Fonts (Roboto)
-- Logo Icon https://www.freepik.com/free-vector/lion-fire-gradient-mascot-illustration-logo-design_54089107.htm#query=flame%20head&position=18&from_view=search&track=ais&uuid=17e479dc-1bd0-4830-8e21-a8fb72937208
+
 - Meeting image : https://www.freepik.com/free-vector/social-distancing-meeting-illustration-theme_8256854.htm#query=meeting%20room&position=0&from_view=search&track=ais&uuid=57a3fe96-1158-4868-8372-122d8170d273
 - LinkedIn Learning: https://www.linkedin.com/learning/django-forms/
 - GoogleAuth: https://pylessons.com/django-google-oauth

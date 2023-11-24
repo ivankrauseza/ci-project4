@@ -14,8 +14,8 @@ def index(request):  # Default root:
 def clr(request):  # LOGIN_REDIRECT_URL = 'clr'
     if request.user.is_authenticated:
         if request.user.is_staff:
-            return redirect('')
+            return redirect('/')
         else:
-            return redirect('')
+            return redirect('/')
     else:
         return redirect('login')

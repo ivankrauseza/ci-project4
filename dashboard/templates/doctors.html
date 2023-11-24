@@ -22,14 +22,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for user in staff_users %}
+                {% for doctor in doctors %}
                     <tr>
                         <td>
-                            {{ user.email }}
+                            {{ doctor.email }}
                         </td>
                         <td>
                             <small>
-                                {% if user.is_active %}
+                                {% if doctor.is_active %}
                                 <a href="{% url 'disable_user' user.id %}" style="color:green">Enabled</a>
                                 {% else %}
                                 <a href="{% url 'disable_user' user.id %}" style="color:red">Disabled</a>
@@ -37,8 +37,8 @@
                             </small>
                         </td>
                         <td>
-                            {% if not user.is_superuser %}
-                                {% if user.is_active %}
+                            {% if not doctor.is_superuser %}
+                                {% if doctor.is_active %}
                                 <a href="{% url 'toggle_superuser' user.id %}" style="color:red">
                                     Create Superuser
                                 </a>
@@ -62,15 +62,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for user in super_users %}
+                {% for superuser in superusers %}
                     <tr>
                         <td>
-                            {{ user.email }} | {{ user.username }} 
+                            {{ superuser.email }} | {{ superuser.username }} 
                             <br/>
                             <small>
-                               {% if user.is_superuser %}
-                                {% if not user.username == 'admin' %}
-                                    <a href="{% url 'toggle_superuser' user.id %}" style="color:red">Remove</a>
+                               {% if superuser.is_superuser %}
+                                {% if not superuser.username == 'admin' %}
+                                    <a href="{% url 'toggle_superuser' superuser.id %}" style="color:red">Remove</a>
                                 {% endif %}
                                 {% endif %}
                             </small>
@@ -91,14 +91,14 @@
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add new Doctor</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Add Team Member</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{% url 'staff' %}">
+                <form method="post" action="{% url 'doctors' %}">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button type="submit" class="btn btn-primary">Create Admin User</button>
+                    <button type="submit" class="btn btn-primary">Create Team Member</button>
                 </form>
             </div>
         </div>

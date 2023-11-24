@@ -11,7 +11,7 @@ from appointment.models import Appointments
 # Disable User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from datetime import date
+from datetime import datetime
 from .forms import AppointmentsForm
 
 
@@ -129,14 +129,14 @@ def members(request):
     return render(request, 'members.html', context)
 
 
-def staff(request):
-    staff_users = User.objects.order_by('email').filter(is_staff=True).filter(is_superuser=False)
-    super_users = User.objects.order_by('email').filter(is_superuser=True)
+def doctors(request):
+    doctors = User.objects.order_by('email').filter(is_staff=True).filter(is_superuser=False)
+    superusers = User.objects.order_by('email').filter(is_superuser=True)
 
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
-            # Create an inactive user
+            # Create a doctor
             user = form.save(request)
             user.is_staff = True
             user.is_superuser = False
@@ -147,17 +147,17 @@ def staff(request):
             email_address.verified = True
             email_address.save()
 
-            return redirect('staff')  # Redirect to a success page
+            return redirect('doctors')  # Redirect to a success page
     else:
         form = SignupForm()
 
     context = {
-        'staff_users': staff_users,
-        'super_users': super_users,
+        'doctors': doctors,
+        'superusers': superusers,
         'form': form,
     }
 
-    return render(request, 'staff.html', context)
+    return render(request, 'doctors.html', context)
 
 
 # ENABLE/DISABLE A STAFF MEMBERS ACCOUNT:
@@ -168,7 +168,7 @@ def disable_user(request, user_id):
     user.is_active = not user.is_active
     user.save()
 
-    return HttpResponseRedirect(reverse('staff'))
+    return HttpResponseRedirect(reverse('doctors'))
 
 
 # ENABLE/DISABLE A SUPERUSER FROM A STAFF ACCOUNT:
@@ -181,4 +181,4 @@ def toggle_superuser(request, user_id):
         user.is_superuser = not user.is_superuser
         user.save()
 
-    return HttpResponseRedirect(reverse('staff'))
+    return HttpResponseRedirect(reverse('doctors'))

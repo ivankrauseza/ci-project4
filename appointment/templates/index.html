@@ -15,18 +15,21 @@
                             <img src="https://res.cloudinary.com/dvtwafw1v/image/upload/v1700749470/lovoro/static/images/l74mxhspilj1auymqnpd.png"/>
                     </div>
                     <!--GUEST VIEW-->
-                    <div class="col-xs-12 col-sm-6 my-auto">
+                    <div class="col-xs-12 col-sm-6 pt-3 pb-3 my-auto text-center">
                             <h1>Welcome to <strong>Lavoro</strong>!</h3>
                             <h4>
-                                Our dedicated medical professionals are here to help you 
-                                with physical and mental health services.
+                                Our medical professionals are here to help you 
+                                via <strong>online consultations</strong> for your physical and mental health.
                             </h4>
                             <hr/>
-                            <a href="{% url 'account_login' %}" class="btn btn-primary">
-                                Members Login
-                            </a>
-                            <a href="{% url 'account_login' %}" class="btn">
-                                Sign Up
+                            <p>Please login to book appointments</p>
+                            <p>
+                                <a href="{% url 'account_login' %}" class="btn btn-primary">
+                                    Members Login
+                                </a>
+                            </p>
+                            <a href="{% url 'account_login' %}">
+                                Create Account
                             </a>
                     </div>
                 </div>

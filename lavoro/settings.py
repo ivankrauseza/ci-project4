@@ -17,7 +17,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'ivankrause-ci-project4-acbd33a75ce8.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ivankrause-ci-project4-acbd33a75ce8.herokuapp.com']
 
 
 # Application definition
@@ -88,7 +88,7 @@ ACCOUNT_ADAPTER = "allauth.account.adapter.DefaultAccountAdapter"
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
 # LOGIN_REDIRECT_URL = "/"
-LOGIN_REDIRECT_URL = 'clr'
+LOGIN_REDIRECT_URL = "clr"
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 ACCOUNT_CHANGE_EMAIL = False
 ACCOUNT_CONFIRM_EMAIL_ON_GET = False
@@ -147,8 +147,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, images)
 STATIC_URL = '/static/'
-
-# STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 

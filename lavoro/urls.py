@@ -8,8 +8,8 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('accounts/', include('allauth.socialaccount.urls')),
     path('', views.index, name='index'),
+    path('clr/', views.clr, name='clr'),
     path('admin/', admin.site.urls),
-    path('custom-login-redirect/', views.clr, name='clr'),
     path('dashboard/', include('dashboard.urls')),
     path('profile/', include('members.urls')),
 ]

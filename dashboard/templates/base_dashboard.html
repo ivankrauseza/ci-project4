@@ -13,6 +13,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-3">
                         <aside>
                             <nav>
+                                <p>Appointments:</p>
                                 <ul>
                                     <li>
                                         <a href="{% url 'dashboard' %}">
@@ -28,7 +29,7 @@
                                     </li>
                                 </ul>
                                 {% if user.is_superuser %}
-                                <h6>Superuser</h6>
+                                <p>Superuser Options:</p>
                                 <ul>
                                     <li>
                                         <a href="{% url 'members' %}">
@@ -37,7 +38,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'staff' %}">
+                                        <a href="{% url 'doctors' %}">
                                             <i class="fa-solid fa-id-badge"></i>
                                             <small>doctors</small>
                                         </a>
