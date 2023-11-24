@@ -4,47 +4,23 @@
 
 {% block dashboard_content %}
 
-    <h2>Patient Appointments</h2>
+    <h2>All Appointments</h2>
 
-    <hr/>
-
-    {% if birds %}
-        <h6>My next appointments:</h6>
+    {% if requests %}
         <div class="content">
-            {% for bird in birds %}
-                <p>
-                    <strong>
-                        {{ bird.app_type }}
-                    </strong>
-                    <br/>
-                        {{ bird.app_date }} @{{ bird.app_time }}
-                </p>
-            {% endfor %}
-        </div>
-    {% else %}
-        <p>You do not have any patient appointments. Please choose from appointment below to confirm an appointment with a patient.</p>
-    {% endif %}
-
-    
-    <hr/>
-    
-    <h6>Open appointments:</h6>
-
-    {% if patients %}
-        <div class="content">
-            {% for patient in patients %}
+            {% for request in requests %}
             <div class="row">
                 <div class="col-sm-6 text-start">
-                    <a href="./{{ patient.id }}">
+                    <a href="./{{ request.id }}">
                         <p>
                             <strong>
-                                {{ patient.app_type }}
+                                {{ request.app_type }}
                             </strong>
                             <br/>
-                                {{ patient.app_date }} @{{ patient.app_time }}
+                                {{ request.app_date }} @{{ request.app_time }}
                             <br/>
                             <small>Confirmation Status: 
-                                {% if patient.confirmed %}
+                                {% if request.confirmed %}
                                     <span class="good">Confirmed</span> 
                                 {% else%}
                                     <span class="bad">Pending</span> 
@@ -54,12 +30,12 @@
                     </a>
                 </div>
                 <div class="col-sm-6">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ patient.id }}">
-                        View Booking
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ request.id }}">
+                        View
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal{{ patient.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal{{ request.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -69,13 +45,13 @@
                             <div class="modal-body">
                                 <p>
                                     <strong>
-                                        {{ patient.app_type }}
+                                        {{ request.app_type }}
                                     </strong>
                                     <br/>
-                                        {{ patient.app_date }} @{{ patient.app_time }}
+                                        {{ request.app_date }} @{{ request.app_time }}
                                     <br/>
                                     <small>Confirmation Status: 
-                                        {% if patient.confirmed %}
+                                        {% if request.confirmed %}
                                             <span class="good">Confirmed</span> 
                                         {% else%}
                                             <span class="bad">Pending</span> 
@@ -83,7 +59,7 @@
                                     </small>
                                 </p>
                                 <hr/>
-                                <form method="post" action="{% url 'patients_accept' patient.id %}">
+                                <form method="post" action="{% url 'dashboard_appointment_accept' request.id %}">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-primary text-white mt-3 fPersian">Confirm Booking</button>
                                 </form>

@@ -20,38 +20,40 @@ from .forms import AppointmentsForm
 
 @login_required
 def dashboard(request):
-    today = date.today()
-    formatted_today = today.strftime("%Y-%m-%d")
-    print(formatted_today)
-    open_appointments = Appointments.objects.filter(confirmed=False).count()
+    # get all appointments
+    appointments = Appointments.objects.all().order_by('app_date')
+    # filter by unique staff incomplete appointments
+    myappointments = appointments.filter(doctor=request.user.id)
     context = {
-        'open_appointments': open_appointments,
+        'myappointments': myappointments
     }
     return render(request, 'dashboard.html', context)
 
 
 @login_required
-def patients(request):
-    print(request.user.id)
-    patients = Appointments.objects.all().filter(confirmed=False).order_by('app_date')
-    birds = Appointments.objects.all().filter(completed=False, doctor=request.user.id).order_by('app_date')
+def appointments(request):
+    # get all appointments
+    appointments = Appointments.objects.all().order_by('app_date')
+    # filter by unconfirmed appointments
+    requests = appointments.filter(confirmed=False)
+
     context = {
-        'patients': patients,
-        'birds': birds
+        'requests': requests,
     }
-    return render(request, 'patients.html', context)
+    return render(request, 'db_appointments.html', context)
 # GP sets the owner field to themselves
 
 
 @login_required
-def patients_detail(request, post_id):
+def appointment_detail(request, post_id):
+    # get appointments by id
     record = get_object_or_404(Appointments, id=post_id)
     if request.method == 'POST':
         form = AppointmentsForm(request.POST, instance=record)
         if form.is_valid():
             form.save()
             messages.success(request, "Data is saved!")
-            return redirect('patients')  # Redirect to a success page
+            return redirect('dashboard_appointments')  # Redirect to a success page
     else:
         form = AppointmentsForm()
 
@@ -60,29 +62,42 @@ def patients_detail(request, post_id):
         'form': form,
     }
 
-    return render(request, 'patients_detail.html', context)
+    return render(request, 'db_appointment_detail.html', context)
 
 
-def patients_accept(request, post_id):
+def appointment_accept(request, post_id):
     post = get_object_or_404(Appointments, pk=post_id)
 
     if request.method == 'POST':
-        post.doctor = request.user.id
-        post.confirmed = True
+
+        # Access the field value you're interested in
+        field_value = post.doctor
+
+        # Check if the field value is 0
+        if field_value == 0:
+            # Do something if the field value is 0
+            print('Field value is 0')
+            post.doctor = request.user.id
+            post.confirmed = True
+            post.save()
+            return redirect('dashboard')
+        else:
+            # Do something else if the field value is not 0
+            messages.info(request, 'Sorry, it looks like another Doctor has accepted this appointment before you.')
+        
+    return render(request, 'db_appointment_error.html', {'post': post})
+
+
+def appointment_cancel(request, post_id):
+    post = get_object_or_404(Appointments, pk=post_id)
+
+    if request.method == 'POST':
+        post.doctor = 0
+        post.confirmed = False
         post.save()
-        return redirect('patients')
+        return redirect('dashboard_appointments')
 
-    return render(request, 'patients_accept.html', {'post': post})
-
-
-def patients_delete(request, post_id):
-    post = get_object_or_404(Appointments, pk=post_id)
-
-    if request.method == 'POST':
-        post.delete()
-        return redirect('patients')
-
-    return render(request, 'patients_delete.html', {'post': post})
+    return render(request, 'db_appointment_cancel.html', {'post': post})
 
 
 def members(request):

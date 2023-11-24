@@ -1,0 +1,37 @@
+{% extends 'base_dashboard.html' %}
+
+{% block title %}Patients{% endblock %}
+
+{% block dashboard_content %}
+    <div class="row">
+        <div class="col-sm-12 text-start">
+            <a href="{% url 'dashboard_appointments' %}">&#x276E; Back to Patients</a>
+            <hr/>
+        </div>
+        <div class="col-sm-6 text-start">
+            <h4>{{ record.app_type }}</h4>
+            <p>
+                {{ record.app_date }} @{{ record.app_time }}
+            </p>
+            
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+        </div>
+        <div class="col-sm-6 text-end my-auto">
+            {% if record.confirmed %}
+                        <span>No longer available</span> 
+                    {% else%}
+                    <form method="post" action="{% url 'dashboard_appointment_accept' record.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success">Accept Appointment</button>
+                    </form>
+                    {% endif%}
+        </div>
+    </div>
+
+{% endblock %}

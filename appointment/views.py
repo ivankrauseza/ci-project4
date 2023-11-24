@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 
 
-# Default root for logged in user:
-def index(request):
+def index(request):  # Default root:
     if request.user.is_authenticated:
         if request.user.is_staff:
             return redirect('/dashboard')
@@ -12,12 +11,11 @@ def index(request):
         return render(request, 'index.html')
 
 
-# Redirect logged in user to appropriate path:
-def clr(request):
+def clr(request):  # LOGIN_REDIRECT_URL = 'clr'
     if request.user.is_authenticated:
         if request.user.is_staff:
-            return redirect('/')
+            return redirect('')
         else:
-            return redirect('/')
+            return redirect('')
     else:
         return redirect('login')

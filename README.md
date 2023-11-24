@@ -68,3 +68,4 @@ Lavaro ('Work' in Italian) is a company that provides shared office space, but a
 - Meeting image : https://www.freepik.com/free-vector/social-distancing-meeting-illustration-theme_8256854.htm#query=meeting%20room&position=0&from_view=search&track=ais&uuid=57a3fe96-1158-4868-8372-122d8170d273
 - LinkedIn Learning: https://www.linkedin.com/learning/django-forms/
 - GoogleAuth: https://pylessons.com/django-google-oauth
+- https://www.toptal.com/designers/htmlarrows/symbols/

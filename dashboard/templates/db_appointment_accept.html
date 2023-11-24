@@ -1,0 +1,23 @@
+{% extends 'base_dashboard.html' %}
+
+{% block title %}Confirm Appointment{% endblock %}
+
+{% block dashboard_content %}
+    <a href="{% url 'dashboard_appointments' %}">&#x276E; Back to Bookings</a>
+    <hr/>
+    <h2>Status cancellation</h2>
+    <p>Are you sure you want to cancel your appointment for {{ post.app_date }} @ {{ post.app_time }}?</p>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form method="post" action="{% url 'dashboard_appointment_accept' post.id %}">
+        {% csrf_token %}
+        <input type="hidden" name="doctor" value="{{ post.doctor }}"/>
+        <button type="submit" class="btn btn-danger">Confirm Appointment</button>
+    </form>
+
+{% endblock %}

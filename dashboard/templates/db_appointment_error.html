@@ -1,0 +1,14 @@
+{% extends 'base_dashboard.html' %}
+
+{% block title %}Confirm Appointment Error{% endblock %}
+
+{% block dashboard_content %}
+    {% if messages %}
+        {% for message in messages %}
+        <p><strong>Error:</strong> <span class="bad">{{ message }}</span></p>
+        {% endfor %}
+    {% endif %}
+    <hr/>
+    <a href="{% url 'dashboard_appointments' %}">&#x276E; Back to Appointments</a>
+
+{% endblock %}

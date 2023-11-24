@@ -5,14 +5,32 @@
 {% block dashboard_content %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-3">
+            <div class="col">
+                <h1>My Appointments</h1>
+                <hr/>
+                {% if myappointments %}
+                <div class="content">
+                    {% for myappointment in myappointments %}
+                        <p>
+                            <strong>
+                                {{ myappointment.app_type }}
+                            </strong>
+                            <br/>
+                                {{ myappointment.app_date }} @{{ myappointment.app_time }}
+                        </p>
+                    {% endfor %}
+    </div>
+{% else %}
+    <p>You do not have any patient appointments. Please choose from appointment below to confirm an appointment with a request.</p>
+{% endif %}
+
                 <div class="insight">
                     <span class="count">
                         {{ open_appointments }}
                     </span>
                     <small>
                         Open Appointments<br/>
-                        <a href="{% url 'patients' %}">
+                        <a href="{% url 'dashboard_appointments' %}">
                             See all
                         </a>
                     </small>

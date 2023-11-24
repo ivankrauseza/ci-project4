@@ -3,11 +3,11 @@
 {% block title %}Delete Appointment{% endblock %}
 
 {% block dashboard_content %}
-    <a href="{% url 'patients' %}">&lt; Back to Bookings</a>
+    <a href="{% url 'dashboard_appointments' %}">&#x276E; Back to Bookings</a>
     <hr/>
     <h2>Confirm cancellation</h2>
     <p>Are you sure you want to cancel your appointment for {{ post.app_date }} @ {{ post.app_time }}?</p>
-    <form method="post" action="{% url 'patients_delete' post.id %}">
+    <form method="post" action="{% url 'dashboard_appointment_delete' post.id %}">
         {% csrf_token %}
         <button type="submit" class="btn btn-danger">Cancel booking</button>
     </form>
