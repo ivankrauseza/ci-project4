@@ -125,9 +125,6 @@ main section .hero_hme {
   float: left;
   width: 100%;
   min-height: calc(100vh - 64px);
-  background-color: #4a229c;
-  background: url("/static/images/background_hme.jpg") 50% 0 no-repeat;
-  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
