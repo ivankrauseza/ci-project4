@@ -37,9 +37,13 @@ We are using the default User table and our custom Appointment table. The Appoin
 ![schema.png](static/readme/schema.png)
 
 ### User Stories
+The user stories are created and managed through Asana.  
+
 ![stories.png](static/readme/stories.png)
 
 ### Wireframes
+Wireframes produced in Adobe Illustrator.
+
 ![wireframe.png](static/readme/wireframe.png)
 
 ### Mockup
