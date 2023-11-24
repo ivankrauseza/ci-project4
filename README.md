@@ -10,6 +10,7 @@ As a person that struggles with social anxiety and mental health issues, I feel 
 - [Testing](#testing)
 - [Bugs](#bugs)
 - [Toolbox](#toolbox)
+- [Resources and Credits](#resources-and-credits)
 
 ## Technology Stack
 See [requirements.txt](https://github.com/ivankrauseza/ci-project4/blob/main/requirements.txt) for an overview of the development environment.  
@@ -135,7 +136,13 @@ Overall, the Lighthouse test performed reasonably ok, across all pages.
 - CALENDAR: User can manually edit calender field (prevent picking past date, only future)
 - FONTAWESOME: icons flashing on reload
 
-## Resources
+## Resources and Credits
+### Walkthroughs for inspiration
+- Code Institute Walkthroughs: (Hello Django, I think therefore I blog, Boutique Ado)
+- [Learning Django](https://www.linkedin.com/learning/learning-django-2/rapidly-create-web-applications)
+- [MDN - Local Library](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Tutorial_local_library_website)
+
+### Look & Feel Artwork
 - [Logo Icon - Freepik](https://www.freepik.com/free-vector/lion-fire-gradient-mascot-illustration-logo-design_54089107.htm#query=flame%20head&position=18&from_view=search&track=ais&uuid=17e479dc-1bd0-4830-8e21-a8fb72937208)
 - Favicon created with: [https://favicon.io/](https://favicon.io/)
 - FALSE: https://timepicker.co/
