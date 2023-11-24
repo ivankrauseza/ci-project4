@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+  // Minor fix to make the AllAuth Forms neater
   $('input[type="text"]').addClass('form-control');
   $('input[type="email"]').addClass('form-control');
   $('input[type="password"]').addClass('form-control');
