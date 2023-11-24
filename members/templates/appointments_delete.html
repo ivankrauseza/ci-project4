@@ -4,7 +4,7 @@
 
 {% block member_content %}
     <a href="{% url 'appointments' %}">&#x276E; Back to Bookings</a>
-    <hr/>
+    <hr>
     <h2>Confirm cancellation</h2>
     <p>Are you sure you want to cancel your appointment for {{ post.app_date }} @ {{ post.app_time }}?</p>
     <form method="post" action="{% url 'appointments_delete' post.id %}">
